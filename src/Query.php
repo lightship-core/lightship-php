@@ -24,4 +24,14 @@ class Query
 
         return $this;
     }
+
+    public function key(): string
+    {
+        return $this->key;
+    }
+
+    public function value(): string
+    {
+        return $this->value;
+    }
 }

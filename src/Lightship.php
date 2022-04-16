@@ -8,14 +8,15 @@ use Webmozart\Assert\Assert;
 
 class Lightship
 {
-    private string $domain;
-
+    /**
+     * @var array<Domain>
+     */
     private array $domains;
 
     /**
-     * @var array<Page>
+     * @var array<Route>
      */
-    private array $pages;
+    private array $routes;
 
     /**
      * @var array<Report>
@@ -59,10 +60,20 @@ class Lightship
         ];
 
         if (empty($this->domains) || !str_starts_with("http", $path)) {
-            $this->routes[] = $route;
-        }
+            $r = new Route();
 
-        $this->domains[count($this->domains) - 1]->addRoute($route);
+            $q = array_map(fn (string $key, string $value): array => [
+                "key" => $key,
+                "value" => $value
+            ], array_keys($queries), $queries);
+
+            $r->setPath($path)
+                ->setQueries($q);
+
+            $this->routes[] = $r;
+        } else {
+            $this->domains[count($this->domains) - 1]->addRoute($route);
+        }
 
         return $this;
     }
@@ -90,8 +101,14 @@ class Lightship
         foreach ($this->routes as $route) {
             $page = new Page();
 
+            $q = [];
+
+            foreach ($route->queries() as $query) {
+                $q[$query->key()] = $query->value();
+            }
+
             $page->setPath($route->path())
-                ->setQueries($route->queries());
+                ->setQueries($q);
 
             $report = $analyser->analyse($page);
 

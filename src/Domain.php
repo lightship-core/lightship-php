@@ -7,6 +7,10 @@ use Webmozart\Assert\Assert;
 class Domain
 {
     private string $base;
+
+    /**
+     * @var array<Route>
+     */
     private array $routes;
 
     public function __construct()
@@ -22,6 +26,9 @@ class Domain
         return $this;
     }
 
+    /**
+     * @param array<array<string, string>> $routes
+     */
     public function setRoutes(array $routes): self
     {
         foreach ($routes as $route) {
@@ -31,6 +38,9 @@ class Domain
         return $this;
     }
 
+    /**
+     * @param array<string, string|array<string, array<string, string>>> $route
+     */
     public function addRoute(array $route): self
     {
         Assert::keyExists($route, "path");
@@ -39,6 +49,8 @@ class Domain
 
         if (isset($route["queries"])) {
             Assert::isArray($route["queries"]);
+
+            assert(is_array($route["queries"]));
 
             foreach ($route["queries"] as $query) {
                 Assert::keyExists($query, "key");
@@ -60,6 +72,9 @@ class Domain
         return $this;
     }
 
+    /**
+     * @return array<Route>
+     */
     public function routes(): array
     {
         return $this->routes;
