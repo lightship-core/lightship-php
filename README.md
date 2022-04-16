@@ -47,6 +47,7 @@ Web page performance and SEO analysis, browser-less.
 
 - [About](#about)
 - [Examples](#examples)
+- [Tests](#tests)
 
 ## About
 
@@ -127,4 +128,11 @@ And here is our configuration file.
     }
   ]
 }
+```
+
+## Tests
+
+```bash
+composer run analyse
+composer run test
 ```

@@ -3,7 +3,6 @@
 namespace Khalyomede;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
 use Khalyomede\Rules\Security\ServerHeaderHidden;
 use Khalyomede\Rules\Security\StrictTransportSecurityHeaderPresent;
 use Khalyomede\Rules\Security\XFrameOptionHeaderPresent;
@@ -14,6 +13,13 @@ use Psr\Http\Message\ResponseInterface;
 
 class Analyser
 {
+    private Client $client;
+
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
+
     public function analyse(Page $page): Report
     {
         $start = microtime(true);
@@ -48,7 +54,7 @@ class Analyser
 
     private function getResponse(Page $page): ResponseInterface
     {
-        return (new Client())->request("GET", $page->url(), [
+        return $this->client->request("GET", $page->url(), [
             "query" => $page->queries(),
         ]);
     }

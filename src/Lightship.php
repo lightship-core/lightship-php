@@ -4,6 +4,7 @@ namespace Khalyomede;
 
 use Closure;
 use Exception;
+use GuzzleHttp\Client;
 use Webmozart\Assert\Assert;
 
 class Lightship
@@ -24,13 +25,16 @@ class Lightship
     private array $reports;
     private Closure $onReportedPageCallback;
 
-    public function __construct()
+    private Client $client;
+
+    public function __construct(Client $client = new Client())
     {
         $this->domains = [];
         $this->routes = [];
         $this->reports = [];
         $this->onReportedPageCallback = function (): void {
         };
+        $this->client = $client;
     }
 
     /**
@@ -80,7 +84,7 @@ class Lightship
 
     public function analyse(): void
     {
-        $analyser = new Analyser();
+        $analyser = new Analyser($this->client);
 
         foreach ($this->domains as $domain) {
             foreach ($domain->routes() as $route) {
@@ -127,7 +131,7 @@ class Lightship
 
     public function toJson(): string
     {
-        $json = json_encode(array_map(fn (Report $report): array => $report->toArray(), $this->reports));
+        $json = json_encode($this->toArray());
 
         if (!is_string($json)) {
             throw new Exception(json_last_error_msg());
@@ -136,9 +140,14 @@ class Lightship
         return $json;
     }
 
+    public function toArray(): array
+    {
+        return array_map(fn (Report $report): array => $report->toArray(), $this->reports);
+    }
+
     public function toPrettyJson(): string
     {
-        $json = json_encode(array_map(fn (Report $report): array => $report->toArray(), $this->reports), JSON_PRETTY_PRINT);
+        $json = json_encode($this->toArray(), JSON_PRETTY_PRINT);
 
         if (!is_string($json)) {
             throw new Exception(json_last_error_msg());
