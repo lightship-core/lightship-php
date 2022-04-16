@@ -1,0 +1,15 @@
+version: "3"
+services:
+  php:
+    image: php:8.1-alpine
+    entrypoint: php
+    volumes:
+      - .:/home/alpine/app
+    working_dir: /home/alpine/app
+
+  composer:
+    image: composer:2
+    entrypoint: composer
+    volumes:
+      - .:/home/alpine/app
+    working_dir: /home/alpine/app
