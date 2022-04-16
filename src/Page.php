@@ -45,7 +45,7 @@ class Page
 
     public function url(): string
     {
-        return $this->domain . (str_ends_with($this->domain, "/") ? "" : "/") . ltrim($this->path, "/") . (empty($this->queries) ? "" : "?") . http_build_query($this->queries);
+        return $this->domain . (empty($this->domain) || str_ends_with($this->domain, "/") ? "" : "/") . ltrim($this->path, "/") . (empty($this->queries) ? "" : "?") . http_build_query($this->queries);
     }
 
     /**
