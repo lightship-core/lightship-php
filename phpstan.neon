@@ -1,5 +1,9 @@
 parameters:
     paths:
         - src
-        # - tests
+        - tests
     level: 9
+    ignoreErrors:
+        - '#Call to an undefined method Pest\\Expectation|Pest\\Support\\Extendable::toBe\(\)#'
+    excludePaths:
+        - tests/Pest.php

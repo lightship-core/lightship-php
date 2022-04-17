@@ -6,6 +6,8 @@ use Psr\Http\Message\ResponseInterface;
 
 interface Rule
 {
+    public function __construct();
+
     public static function fromResponse(ResponseInterface $response): self;
 
     public function toReport(): RuleReport;
