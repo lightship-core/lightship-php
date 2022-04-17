@@ -6,9 +6,9 @@ use DOMAttr;
 use DOMDocument;
 use DOMNamedNodeMap;
 use DOMNode;
-use Khalyomede\Rules\BaseRule;
 use Khalyomede\Rule;
 use Khalyomede\RuleReport;
+use Khalyomede\Rules\BaseRule;
 use Khalyomede\RuleType;
 
 class LangPresent extends BaseRule implements Rule

@@ -2,9 +2,9 @@
 
 namespace Khalyomede\Rules\Security;
 
-use Khalyomede\Rules\BaseRule;
 use Khalyomede\Rule;
 use Khalyomede\RuleReport;
+use Khalyomede\Rules\BaseRule;
 use Khalyomede\RuleType;
 
 class StrictTransportSecurityHeaderPresent extends BaseRule implements Rule

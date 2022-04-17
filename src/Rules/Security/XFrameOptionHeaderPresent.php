@@ -2,9 +2,9 @@
 
 namespace Khalyomede\Rules\Security;
 
-use Khalyomede\Rules\BaseRule;
 use Khalyomede\Rule;
 use Khalyomede\RuleReport;
+use Khalyomede\Rules\BaseRule;
 use Khalyomede\RuleType;
 
 class XFrameOptionHeaderPresent extends BaseRule implements Rule
@@ -31,7 +31,7 @@ class XFrameOptionHeaderPresent extends BaseRule implements Rule
     private function passes(): bool
     {
         foreach ($this->response->getHeaders() as $key => $value) {
-            if (strtolower($key) === "x-frame-options" && isset($value[0]) && in_array(strtolower($value[0]), ["deny", "sameorigin"])) {
+            if (strtolower($key) === "x-frame-options" && isset($value[0]) && in_array(strtolower($value[0]), ["deny", "sameorigin"], true)) {
                 return true;
             }
         }

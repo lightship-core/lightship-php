@@ -22,11 +22,14 @@
   },
   "require-dev": {
     "phpstan/phpstan": "1.5.6",
-    "pestphp/pest": "1.21.2"
+    "pestphp/pest": "1.21.2",
+    "friendsofphp/php-cs-fixer": "3.8.0"
   },
   "scripts": {
     "analyse": "phpstan analyse",
-    "test": "pest"
+    "test": "pest",
+    "lint": "php-cs-fixer fix --diff --using-cache=no --allow-risky=yes --dry-run",
+    "format": "php-cs-fixer --using-cache=no --allow-risky=yes fix"
   },
   "config": {
     "allow-plugins": {

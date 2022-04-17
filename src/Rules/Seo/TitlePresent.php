@@ -4,9 +4,9 @@ namespace Khalyomede\Rules\Seo;
 
 use DOMDocument;
 use DOMNode;
-use Khalyomede\Rules\BaseRule;
 use Khalyomede\Rule;
 use Khalyomede\RuleReport;
+use Khalyomede\Rules\BaseRule;
 use Khalyomede\RuleType;
 
 class TitlePresent extends BaseRule implements Rule
