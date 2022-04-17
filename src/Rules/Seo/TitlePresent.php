@@ -4,30 +4,13 @@ namespace Khalyomede\Rules\Seo;
 
 use DOMDocument;
 use DOMNode;
-use GuzzleHttp\Psr7\Response;
+use Khalyomede\Rules\BaseRule;
 use Khalyomede\Rule;
 use Khalyomede\RuleReport;
 use Khalyomede\RuleType;
-use Psr\Http\Message\ResponseInterface;
 
-class TitlePresent implements Rule
+class TitlePresent extends BaseRule implements Rule
 {
-    private ResponseInterface $response;
-
-    public function __construct()
-    {
-        $this->response = new Response();
-    }
-
-    public static function fromResponse(ResponseInterface $response): self
-    {
-        $instance = new self();
-
-        $instance->response = $response;
-
-        return $instance;
-    }
-
     public function toReport(): RuleReport
     {
         $report = new RuleReport();

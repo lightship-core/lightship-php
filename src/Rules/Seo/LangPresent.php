@@ -6,30 +6,13 @@ use DOMAttr;
 use DOMDocument;
 use DOMNamedNodeMap;
 use DOMNode;
-use GuzzleHttp\Psr7\Response;
+use Khalyomede\Rules\BaseRule;
 use Khalyomede\Rule;
 use Khalyomede\RuleReport;
 use Khalyomede\RuleType;
-use Psr\Http\Message\ResponseInterface;
 
-class LangPresent implements Rule
+class LangPresent extends BaseRule implements Rule
 {
-    private ResponseInterface $response;
-
-    public function __construct()
-    {
-        $this->response = new Response();
-    }
-
-    public static function fromResponse(ResponseInterface $response): self
-    {
-        $instance = new self();
-
-        $instance->response = $response;
-
-        return $instance;
-    }
-
     public function toReport(): RuleReport
     {
         $report = new RuleReport();
@@ -68,6 +51,7 @@ class LangPresent implements Rule
         libxml_clear_errors();
 
         return $element->attributes instanceof DOMNamedNodeMap &&
-            $element->attributes->getNamedItem("lang") instanceof DOMAttr;
+            $element->attributes->getNamedItem("lang") instanceof DOMAttr &&
+            !empty($element->attributes->getNamedItem("lang")->nodeValue);
     }
 }
