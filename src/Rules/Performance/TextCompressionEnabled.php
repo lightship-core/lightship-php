@@ -31,7 +31,7 @@ class TextCompressionEnabled extends BaseRule implements Rule
     public function passes(): bool
     {
         foreach ($this->response->getHeaders() as $key => $value) {
-            if (strtolower($key) === "content-encoding" && isset($value[0]) && in_array(strtolower($value[0]), ["br", "gzip", "deflate"])) {
+            if (strtolower($key) === "content-encoding" && isset($value[0]) && in_array(strtolower($value[0]), ["br", "gzip", "deflate"], true)) {
                 return true;
             }
         }
