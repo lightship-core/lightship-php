@@ -7,4 +7,5 @@ enum RuleType
     case Unknown;
     case Security;
     case Seo;
+    case Performance;
 }

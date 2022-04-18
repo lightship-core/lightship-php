@@ -54,9 +54,11 @@ class Report
             "scores" => [
                 "seo" => $this->score(RuleType::Seo),
                 "security" => $this->score(RuleType::Security),
+                "performance" => $this->score(RuleType::Performance),
             ],
             "seo" => $this->results(RuleType::Seo),
             "security" => $this->results(RuleType::Security),
+            "performance" => $this->results(RuleType::Performance),
         ];
     }
 

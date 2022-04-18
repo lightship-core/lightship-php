@@ -3,6 +3,7 @@
 namespace Khalyomede;
 
 use GuzzleHttp\Client;
+use Khalyomede\Rules\Performance\TextCompressionEnabled;
 use Khalyomede\Rules\Security\ServerHeaderHidden;
 use Khalyomede\Rules\Security\StrictTransportSecurityHeaderPresent;
 use Khalyomede\Rules\Security\XFrameOptionHeaderPresent;
@@ -49,6 +50,8 @@ class Analyser
             // Seo
             TitlePresent::fromResponse($response)->toReport(),
             LangPresent::fromResponse($response)->toReport(),
+            // Performance
+            TextCompressionEnabled::fromResponse($response)->toReport(),
         ];
     }
 
