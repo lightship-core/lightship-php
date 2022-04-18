@@ -2,22 +2,21 @@
 
 namespace Khalyomede\Rules;
 
-use GuzzleHttp\Psr7\Response;
+use Khalyomede\Response;
 use Khalyomede\Rule;
 use Khalyomede\RuleReport;
 use Khalyomede\RuleType;
-use Psr\Http\Message\ResponseInterface;
 
 class BaseRule implements Rule
 {
-    protected ResponseInterface $response;
+    protected Response $response;
 
     public function __construct()
     {
         $this->response = new Response();
     }
 
-    public static function fromResponse(ResponseInterface $response): self
+    public static function fromResponse(Response $response): self
     {
         $instance = new static();
 

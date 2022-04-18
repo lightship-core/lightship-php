@@ -2,13 +2,11 @@
 
 namespace Khalyomede;
 
-use Psr\Http\Message\ResponseInterface;
-
 interface Rule
 {
     public function __construct();
 
-    public static function fromResponse(ResponseInterface $response): self;
+    public static function fromResponse(Response $response): self;
 
     public function toReport(): RuleReport;
 

@@ -3,6 +3,9 @@
 namespace Khalyomede;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
+use GuzzleHttp\TransferStats;
+use Khalyomede\Rules\Performance\FastResponseTime;
 use Khalyomede\Rules\Performance\NoRedirects;
 use Khalyomede\Rules\Performance\TextCompressionEnabled;
 use Khalyomede\Rules\Security\ServerHeaderHidden;
@@ -11,7 +14,6 @@ use Khalyomede\Rules\Security\XFrameOptionHeaderPresent;
 use Khalyomede\Rules\Security\XPoweredByHidden;
 use Khalyomede\Rules\Seo\LangPresent;
 use Khalyomede\Rules\Seo\TitlePresent;
-use Psr\Http\Message\ResponseInterface;
 
 class Analyser
 {
@@ -40,7 +42,7 @@ class Analyser
     /**
      * @return array<RuleReport>
      */
-    private function ruleReports(ResponseInterface $response): array
+    private function ruleReports(Response $response): array
     {
         return [
             // Security
@@ -54,13 +56,23 @@ class Analyser
             // Performance
             TextCompressionEnabled::fromResponse($response)->toReport(),
             NoRedirects::fromResponse($response)->toReport(),
+            FastResponseTime::fromResponse($response)->toReport(),
         ];
     }
 
-    private function getResponse(Page $page): ResponseInterface
+    private function getResponse(Page $page): Response
     {
-        return $this->client->request("GET", $page->url(), [
+        $responseTimeInSeconds = 0;
+
+        $response = $this->client->request("GET", $page->url(), [
             "query" => $page->queries(),
+            RequestOptions::ON_STATS => function (TransferStats $stats) use (&$responseTimeInSeconds): void {
+                $responseTimeInSeconds = $stats->getTransferTime() ?? 2;
+            },
         ]);
+
+        return (new Response())
+            ->setOriginalResponse($response)
+            ->setResponseTimeInSeconds($responseTimeInSeconds);
     }
 }
