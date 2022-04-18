@@ -8,6 +8,7 @@ use GuzzleHttp\TransferStats;
 use Khalyomede\Rules\Performance\FastResponseTime;
 use Khalyomede\Rules\Performance\NoRedirects;
 use Khalyomede\Rules\Performance\TextCompressionEnabled;
+use Khalyomede\Rules\Performance\UsesHttp2;
 use Khalyomede\Rules\Security\ServerHeaderHidden;
 use Khalyomede\Rules\Security\StrictTransportSecurityHeaderPresent;
 use Khalyomede\Rules\Security\XFrameOptionHeaderPresent;
@@ -57,6 +58,7 @@ class Analyser
             TextCompressionEnabled::fromResponse($response)->toReport(),
             NoRedirects::fromResponse($response)->toReport(),
             FastResponseTime::fromResponse($response)->toReport(),
+            UsesHttp2::fromResponse($response)->toReport(),
         ];
     }
 
