@@ -1,14 +1,28 @@
 version: "3"
 services:
   php:
-    image: php:8.1-alpine
+    build: ./docker/php/8.1
+    entrypoint: php
+    volumes:
+      - .:/home/alpine/app
+    working_dir: /home/alpine/app
+
+  php80:
+    build: ./docker/php/8.0
     entrypoint: php
     volumes:
       - .:/home/alpine/app
     working_dir: /home/alpine/app
 
   composer:
-    image: composer:2
+    build: ./docker/php/8.1
+    entrypoint: composer
+    volumes:
+      - .:/home/alpine/app
+    working_dir: /home/alpine/app
+
+  composer80:
+    build: ./docker/php/8.0
     entrypoint: composer
     volumes:
       - .:/home/alpine/app

@@ -48,6 +48,7 @@ Web page performance and SEO analysis, browser-less.
 - [About](#about)
 - [Examples](#examples)
 - [Tests](#tests)
+- [Compatibility table](#compatibility-table)
 
 ## About
 
@@ -133,6 +134,16 @@ And here is our configuration file.
 ## Tests
 
 ```bash
+composer install
 composer run analyse
 composer run test
 ```
+
+## Compatibility table
+
+This table shows the compatibility with PHP versions **for this current package version** only.
+
+| PHP version | Supported |
+|-------------|-----------|
+| 8.1.*       | ✅        |
+| <= 8.0.*    | ❌        |
