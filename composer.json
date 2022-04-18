@@ -16,10 +16,6 @@
     }
   ],
   "minimum-stability": "stable",
-  "require": {
-    "guzzlehttp/guzzle": "7.4.2",
-    "webmozart/assert": "1.10.0"
-  },
   "require-dev": {
     "phpstan/phpstan": "1.5.6",
     "pestphp/pest": "1.21.2",
@@ -39,5 +35,9 @@
     "allow-plugins": {
       "pestphp/pest-plugin": true
     }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "7.*",
+    "webmozart/assert": "1.*"
   }
 }
