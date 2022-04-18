@@ -38,7 +38,9 @@ class Response implements ResponseInterface
 
     public function withStatus($code, $reasonPhrase = ''): static
     {
-        return $this->originalResponse->withStatus($code, $reasonPhrase);
+        $this->originalResponse->withStatus($code, $reasonPhrase);
+
+        return $this;
     }
 
     public function getReasonPhrase(): string
@@ -53,7 +55,9 @@ class Response implements ResponseInterface
 
     public function withProtocolVersion($version): static
     {
-        return $this->originalResponse->withProtocolVersion($version);
+        $this->originalResponse->withProtocolVersion($version);
+
+        return $this;
     }
 
     public function getHeaders(): array
@@ -78,17 +82,23 @@ class Response implements ResponseInterface
 
     public function withHeader($name, $value): static
     {
-        return $this->originalResponse->withHeader($name, $value);
+        $this->originalResponse->withHeader($name, $value);
+
+        return $this;
     }
 
     public function withAddedHeader($name, $value): static
     {
-        return $this->originalResponse->withAddedHeader($name, $value);
+        $this->originalResponse->withAddedHeader($name, $value);
+
+        return $this;
     }
 
     public function withoutHeader($name): static
     {
-        return $this->originalResponse->withoutHeader($name);
+        $this->originalResponse->withoutHeader($name);
+
+        return $this;
     }
 
     public function getBody(): StreamInterface
@@ -98,6 +108,8 @@ class Response implements ResponseInterface
 
     public function withBody(StreamInterface $body): static
     {
-        return $this->originalResponse->withBody($body);
+        $this->originalResponse->withBody($body);
+
+        return $this;
     }
 }
