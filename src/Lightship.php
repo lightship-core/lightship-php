@@ -44,7 +44,10 @@ class Lightship
             RequestOptions::ALLOW_REDIRECTS => [
                 "track_redirects" => true,
             ],
-            'version' => '2.0'
+            'version' => '2.0',
+            RequestOptions::HEADERS => [
+                "Accept-Encoding" => "gzip,deflate,br",
+            ],
         ]);
     }
 
