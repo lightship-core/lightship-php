@@ -5,6 +5,7 @@ namespace Khalyomede;
 use Closure;
 use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 use Webmozart\Assert\Assert;
 
 class Lightship
@@ -27,14 +28,23 @@ class Lightship
 
     private Client $client;
 
-    public function __construct(Client $client = new Client())
+    public function __construct(?Client $client = null)
     {
         $this->domains = [];
         $this->routes = [];
         $this->reports = [];
         $this->onReportedPageCallback = function (): void {
         };
-        $this->client = $client;
+        $this->client = $client instanceof Client ? $client : self::getHttpClient();
+    }
+
+    public static function getHttpClient(): Client
+    {
+        return new Client([
+            RequestOptions::ALLOW_REDIRECTS => [
+                "track_redirects" => true,
+            ],
+        ]);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace Khalyomede;
 
 use GuzzleHttp\Client;
+use Khalyomede\Rules\Performance\NoRedirects;
 use Khalyomede\Rules\Performance\TextCompressionEnabled;
 use Khalyomede\Rules\Security\ServerHeaderHidden;
 use Khalyomede\Rules\Security\StrictTransportSecurityHeaderPresent;
@@ -52,6 +53,7 @@ class Analyser
             LangPresent::fromResponse($response)->toReport(),
             // Performance
             TextCompressionEnabled::fromResponse($response)->toReport(),
+            NoRedirects::fromResponse($response)->toReport(),
         ];
     }
 
