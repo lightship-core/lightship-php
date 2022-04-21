@@ -27,7 +27,7 @@ class Domain
     }
 
     /**
-     * @param array<array<string, string>> $routes
+     * @param array<Route> $routes
      */
     public function setRoutes(array $routes): self
     {
@@ -38,36 +38,9 @@ class Domain
         return $this;
     }
 
-    /**
-     * @param array<string, string|array<string, array<string, string>>> $route
-     */
-    public function addRoute(array $route): self
+    public function addRoute(Route $route): self
     {
-        Assert::keyExists($route, "path");
-        Assert::string($route["path"]);
-        Assert::notEmpty($route["path"]);
-
-        if (isset($route["queries"])) {
-            Assert::isArray($route["queries"]);
-
-            assert(is_array($route["queries"]));
-
-            foreach ($route["queries"] as $query) {
-                Assert::keyExists($query, "key");
-                Assert::keyExists($query, "value");
-                Assert::string($query["key"]);
-                Assert::string($query["value"]);
-                Assert::notEmpty($query["key"]);
-                Assert::notEmpty($query["value"]);
-            }
-        }
-
-        $r = new Route();
-
-        $r->setPath($route["path"])
-            ->setQueries($route["queries"] ?? []);
-
-        $this->routes[] = $r;
+        $this->routes[] = $route;
 
         return $this;
     }

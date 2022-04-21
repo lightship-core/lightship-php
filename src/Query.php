@@ -2,6 +2,8 @@
 
 namespace Khalyomede;
 
+use Webmozart\Assert\Assert;
+
 class Query
 {
     private string $key;
@@ -13,14 +15,18 @@ class Query
 
     public function setKey(string $key): self
     {
-        $this->key = $key;
+        Assert::notEmpty($key);
+
+        $this->key = filter_var($key, FILTER_SANITIZE_ENCODED);
 
         return $this;
     }
 
     public function setValue(string $value): self
     {
-        $this->value = $value;
+        Assert::notEmpty($value);
+
+        $this->value = filter_var($value, FILTER_SANITIZE_ENCODED);
 
         return $this;
     }

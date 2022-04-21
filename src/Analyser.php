@@ -25,15 +25,15 @@ class Analyser
         $this->client = $client;
     }
 
-    public function analyse(Page $page): Report
+    public function analyse(Route $route): Report
     {
         $start = microtime(true);
 
-        $response = $this->getResponse($page);
+        $response = $this->getResponse($route);
 
         $report = new Report();
 
-        $report->url($page->url())
+        $report->url($route->path())
             ->setRuleReports($this->ruleReports($response))
             ->durationInSeconds(round((microtime(true) - $start), 2));
 
@@ -62,12 +62,12 @@ class Analyser
         ];
     }
 
-    private function getResponse(Page $page): Response
+    private function getResponse(Route $route): Response
     {
         $responseTimeInSeconds = 0;
 
-        $response = $this->client->request("GET", $page->url(), [
-            "query" => $page->queries(),
+        $response = $this->client->request("GET", $route->path(), [
+            "query" => $route->queriesList(),
             RequestOptions::ON_STATS => function (TransferStats $stats) use (&$responseTimeInSeconds): void {
                 $responseTimeInSeconds = $stats->getTransferTime() ?? 2;
             },

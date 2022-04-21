@@ -10,10 +10,7 @@ use Webmozart\Assert\Assert;
 
 class Lightship
 {
-    /**
-     * @var array<Domain>
-     */
-    private array $domains;
+    private string $domain;
 
     /**
      * @var array<Route>
@@ -24,16 +21,16 @@ class Lightship
      * @var array<Report>
      */
     private array $reports;
-    private Closure $onReportedPageCallback;
+    private Closure $onReportedRouteCallback;
 
     private Client $client;
 
     public function __construct(?Client $client = null)
     {
-        $this->domains = [];
+        $this->domain = "";
         $this->routes = [];
         $this->reports = [];
-        $this->onReportedPageCallback = function (): void {
+        $this->onReportedRouteCallback = function (): void {
         };
         $this->client = $client instanceof Client ? $client : self::getHttpClient();
     }
@@ -56,11 +53,7 @@ class Lightship
      */
     public function domain(string $domain): self
     {
-        $d = new Domain();
-
-        $d->setBase($domain);
-
-        $this->domains[] = $d;
+        $this->domain = $domain;
 
         return $this;
     }
@@ -68,29 +61,36 @@ class Lightship
     /**
      * @param array<string, string> $queries
      *
-     * @todo Raise if page already added.
+     * @todo Raise if route already added.
      */
     public function route(string $path, array $queries = []): self
     {
-        $route = [
-            "path" => $path,
-            "queries" => $queries,
-        ];
-
-        if (empty($this->domains) || !str_starts_with("http", $path)) {
+        if (empty($this->domain) || !str_starts_with("http", $path)) {
             $r = new Route();
 
-            $q = array_map(fn (string $key, string $value): array => [
-                "key" => $key,
-                "value" => $value
-            ], array_keys($queries), $queries);
+            $q = array_map(
+                fn (string $key, string $value): Query => (new Query())
+                    ->setKey($key)
+                    ->setValue($value),
+                array_keys($queries),
+                $queries
+            );
 
             $r->setPath($path)
                 ->setQueries($q);
 
             $this->routes[] = $r;
         } else {
-            $this->domains[count($this->domains) - 1]->addRoute($route);
+            $q = array_map(
+                fn (array $query): Query => (new Query())
+                    ->setKey($query["key"] ?? "")
+                    ->setValue($query["value"] ?? ""),
+                $queries
+            );
+
+            $this->routes[] = (new Route())
+                ->setPath($this->domain . (str_ends_with($this->domain, "/") ? "" : "/") . ltrim($path, "/"))
+                ->setQueries($queries);
         }
 
         return $this;
@@ -100,45 +100,18 @@ class Lightship
     {
         $analyser = new Analyser($this->client);
 
-        foreach ($this->domains as $domain) {
-            foreach ($domain->routes() as $route) {
-                $page = new Page();
-
-                $page->setDomain($domain->base())
-                    ->setQueries($route->queries())
-                    ->setPath($route->path());
-
-                $report = $analyser->analyse($page);
-
-                $this->reports[] = $report;
-
-                call_user_func($this->onReportedPageCallback, [$page, $report]);
-            }
-        }
-
         foreach ($this->routes as $route) {
-            $page = new Page();
-
-            $q = [];
-
-            foreach ($route->queries() as $query) {
-                $q[$query->key()] = $query->value();
-            }
-
-            $page->setPath($route->path())
-                ->setQueries($q);
-
-            $report = $analyser->analyse($page);
+            $report = $analyser->analyse($route);
 
             $this->reports[] = $report;
 
-            call_user_func($this->onReportedPageCallback, [$page, $report]);
+            call_user_func($this->onReportedRouteCallback, [$route, $report]);
         }
     }
 
-    public function onReportedPage(Closure $callback): self
+    public function onReportedRoute(Closure $callback): self
     {
-        $this->onReportedPageCallback = $callback;
+        $this->onReportedRouteCallback = $callback;
 
         return $this;
     }
