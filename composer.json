@@ -24,7 +24,7 @@
   },
   "scripts": {
     "analyse": "phpstan analyse",
-    "test": "pest",
+    "test": "pest --coverage",
     "lint": "php-cs-fixer fix --diff --using-cache=no --allow-risky=yes --dry-run",
     "format": "php-cs-fixer --using-cache=no --allow-risky=yes fix",
     "install-security-checker": "local-php-security-checker-installer",

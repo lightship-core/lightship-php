@@ -12,6 +12,7 @@ RUN apt-get update && \
     unzip \
     php8.0 \
     php8.0-zip \
+    php8.0-xdebug \
     php8.0-xml && \
     # Composer
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
