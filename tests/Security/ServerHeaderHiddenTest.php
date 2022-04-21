@@ -20,6 +20,8 @@ test("server header hidden passes if the header is not present", function (): vo
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["security"][2])->toBe([
         "name" => "serverHeaderHidden",
         "passes" => true,
@@ -40,6 +42,8 @@ test("server header hidden passes if the header is empty", function (): void {
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["security"][2])->toBe([
         "name" => "serverHeaderHidden",
         "passes" => true,
@@ -59,6 +63,8 @@ test("server header hidden does not pass if the header is filled", function (): 
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["security"][2])->toBe([
         "name" => "serverHeaderHidden",

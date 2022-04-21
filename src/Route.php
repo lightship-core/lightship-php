@@ -29,7 +29,7 @@ class Route
     }
 
     /**
-     * @param array<Query>
+     * @param array<Query> $queries
      */
     public function setQueries(array $queries): self
     {
@@ -51,6 +51,9 @@ class Route
         return $this->queries;
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function queriesList(): array
     {
         $list = [];

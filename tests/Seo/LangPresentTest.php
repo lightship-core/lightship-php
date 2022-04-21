@@ -20,6 +20,8 @@ test("lang present passes if the lang is defined in the html tag", function (): 
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["seo"][1])->toBe([
         "name" => "langPresent",
         "passes" => true,
@@ -40,6 +42,8 @@ test("lang present does not pass if the lang is not defined in the html tag", fu
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["seo"][1])->toBe([
         "name" => "langPresent",
         "passes" => false,
@@ -59,6 +63,8 @@ test("lang present does not pass if the lang is empty in the html tag", function
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["seo"][1])->toBe([
         "name" => "langPresent",

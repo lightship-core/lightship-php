@@ -20,6 +20,8 @@ test("text compression enabled passes if the header is present and has gzip valu
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["performance"][0])->toBe([
         "name" => "textCompressionEnabled",
         "passes" => true,
@@ -39,6 +41,8 @@ test("text compression enabled passes if the header is present and has deflate v
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["performance"][0])->toBe([
         "name" => "textCompressionEnabled",
@@ -60,6 +64,8 @@ test("text compression enabled passes if the header is present and has br value"
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["performance"][0])->toBe([
         "name" => "textCompressionEnabled",
         "passes" => true,
@@ -79,6 +85,8 @@ test("text compression enabled passes if the x-header is present and has gzip va
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["performance"][0])->toBe([
         "name" => "textCompressionEnabled",
@@ -100,6 +108,8 @@ test("text compression enabled passes if the x-header is present and has deflate
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["performance"][0])->toBe([
         "name" => "textCompressionEnabled",
         "passes" => true,
@@ -119,6 +129,8 @@ test("text compression enabled passes if the x-header is present and has br valu
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["performance"][0])->toBe([
         "name" => "textCompressionEnabled",
@@ -140,6 +152,8 @@ test("text compression enabled does not pass if the header is present and has an
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["performance"][0])->toBe([
         "name" => "textCompressionEnabled",
         "passes" => false,
@@ -159,6 +173,8 @@ test("text compression enabled does not pass if the header is not present", func
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["performance"][0])->toBe([
         "name" => "textCompressionEnabled",

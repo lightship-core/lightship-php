@@ -21,6 +21,8 @@ test("fast response time passes if the server responded in <= 1s", function (): 
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["performance"][2])->toBe([
         "name" => "fastResponseTime",
         "passes" => true,
@@ -51,6 +53,8 @@ test("fast response time does not pass if the server responded in more than 1s",
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["performance"][2])->toBe([
         "name" => "fastResponseTime",

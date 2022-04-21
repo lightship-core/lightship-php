@@ -20,6 +20,8 @@ test('test titlePresent does pass when the title tag is filled', function (): vo
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["seo"][0])->toBe([
         "name" => "titlePresent",
         "passes" => true,
@@ -40,6 +42,8 @@ test('test titlePresent does not pass when the title tag is missing', function (
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["seo"][0])->toBe([
         "name" => "titlePresent",
         "passes" => false,
@@ -59,6 +63,8 @@ test('test titlePresent does not pass when the title tag is empty', function ():
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["seo"][0])->toBe([
         "name" => "titlePresent",

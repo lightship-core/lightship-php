@@ -20,6 +20,8 @@ test("strict transport security header present passes if the header has a max-ag
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["security"][1])->toBe([
         "name" => "strictTransportSecurityHeaderPresent",
         "passes" => true,
@@ -39,6 +41,8 @@ test("strict transport security header present passes if the header has a max-ag
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["security"][1])->toBe([
         "name" => "strictTransportSecurityHeaderPresent",
@@ -60,6 +64,8 @@ test("strict transport security header present passes if the header has a max-ag
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["security"][1])->toBe([
         "name" => "strictTransportSecurityHeaderPresent",
         "passes" => true,
@@ -80,6 +86,8 @@ test("strict transport security header present does not pass if the header is em
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["security"][1])->toBe([
         "name" => "strictTransportSecurityHeaderPresent",
         "passes" => false,
@@ -99,6 +107,8 @@ test("strict transport security header present does not pass if the header is no
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["security"][1])->toBe([
         "name" => "strictTransportSecurityHeaderPresent",

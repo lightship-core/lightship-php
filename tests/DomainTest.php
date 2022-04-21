@@ -39,6 +39,9 @@ test("can set multiple routes", function (): void {
 });
 
 test("setRoutes returns instance of Domain", function (): void {
+    /**
+     * @phpstan-ignore-next-line Parameter #1 $routes of method Khalyomede\Domain::setRoutes() expects array<Khalyomede\Route>, array<int, string> given.
+     */
     expect((new Domain())->setRoutes([]))->toBeInstanceOf(Domain::class);
 });
 
@@ -54,5 +57,6 @@ test("throw exception when setting a route that is not instanceof Route", functi
     $faker = Factory::create();
     $domain = (new Domain());
 
+    /** @phpstan-ignore-next-line Parameter #1 $routes of method Khalyomede\Domain::setRoutes() expects array<Khalyomede\Route>, array<int, string> given. */
     expect(fn () => $domain->setRoutes([$faker->text()]))->toThrow(TypeError::class);
 });

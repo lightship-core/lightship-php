@@ -2,8 +2,6 @@
 
 namespace Khalyomede;
 
-use Webmozart\Assert\Assert;
-
 class Domain
 {
     private string $base;

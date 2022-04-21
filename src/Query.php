@@ -2,6 +2,7 @@
 
 namespace Khalyomede;
 
+use RuntimeException;
 use Webmozart\Assert\Assert;
 
 class Query
@@ -11,13 +12,21 @@ class Query
 
     public function __construct()
     {
+        $this->key = "";
+        $this->value = "";
     }
 
     public function setKey(string $key): self
     {
         Assert::notEmpty($key);
 
-        $this->key = filter_var($key, FILTER_SANITIZE_ENCODED);
+        $filteredKey = filter_var($key, FILTER_SANITIZE_ENCODED);
+
+        if (!is_string($filteredKey)) {
+            throw new RuntimeException("Cannot filter query key");
+        }
+
+        $this->key = $filteredKey;
 
         return $this;
     }
@@ -26,7 +35,13 @@ class Query
     {
         Assert::notEmpty($value);
 
-        $this->value = filter_var($value, FILTER_SANITIZE_ENCODED);
+        $filteredValue = filter_var($value, FILTER_SANITIZE_ENCODED);
+
+        if (!is_string($filteredValue)) {
+            throw new RuntimeException("Cannot filter query value");
+        }
+
+        $this->value = $filteredValue;
 
         return $this;
     }

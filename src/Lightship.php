@@ -81,6 +81,9 @@ class Lightship
 
             $this->routes[] = $r;
         } else {
+            /**
+             * @var array<Query>
+             */
             $q = array_map(
                 fn (array $query): Query => (new Query())
                     ->setKey($query["key"] ?? "")
@@ -90,7 +93,7 @@ class Lightship
 
             $this->routes[] = (new Route())
                 ->setPath($this->domain . (str_ends_with($this->domain, "/") ? "" : "/") . ltrim($path, "/"))
-                ->setQueries($queries);
+                ->setQueries($q);
         }
 
         return $this;
@@ -127,6 +130,9 @@ class Lightship
         return $json;
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function toArray(): array
     {
         return array_map(fn (Report $report): array => $report->toArray(), $this->reports);
@@ -171,9 +177,24 @@ class Lightship
                 Assert::notEmpty($domain["base"]);
                 Assert::isArray($domain["routes"]);
 
-                $this->domains[] = (new Domain())
-                    ->setRoutes($domain["routes"])
-                    ->setBase($domain["base"]);
+                $base = $domain["base"];
+
+                foreach ($domain["routes"] as $route) {
+                    Assert::keyExists($route, "path");
+                    Assert::string($route["path"]);
+                    Assert::notEmpty($route["path"]);
+
+                    $queries = array_map(
+                        fn (array $query): Query => (new Query())
+                            ->setKey($query["key"] ?? "")
+                            ->setValue($query["value"] ?? ""),
+                        $route["queries"] ?? []
+                    );
+
+                    $this->routes[] = (new Route())
+                        ->setPath($base . (str_ends_with($base, "/") ? "" : "/") . ltrim($route["path"], "/"))
+                        ->setQueries($queries);
+                }
             }
         }
 
@@ -183,13 +204,16 @@ class Lightship
                 Assert::string($route["path"]);
                 Assert::notEmpty($route["path"]);
 
-                if (isset($route["queries"])) {
-                    Assert::isArray($route["queries"]);
-                }
+                $queries = array_map(
+                    fn (array $query): Query => (new Query())
+                        ->setKey($query["key"] ?? "")
+                        ->setValue($query["value"] ?? ""),
+                    $route["queries"] ?? []
+                );
 
                 $this->routes[] = (new Route())
                     ->setPath($route["path"])
-                    ->setQueries($route["queries"] ?? []);
+                    ->setQueries($queries);
             }
         }
 

@@ -20,6 +20,8 @@ test("x frame options passes if the header is deny", function (): void {
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["security"][0])->toBe([
         "name" => "xFrameOptionsPresent",
         "passes" => true,
@@ -39,6 +41,8 @@ test("x frame options passes if the header is sameorigin", function (): void {
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["security"][0])->toBe([
         "name" => "xFrameOptionsPresent",
@@ -60,6 +64,8 @@ test("x frame options does not passes if the header use deprecated allow-from", 
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["security"][0])->toBe([
         "name" => "xFrameOptionsPresent",
         "passes" => false,
@@ -79,6 +85,8 @@ test("x frame options does not passes if the header is something else", function
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["security"][0])->toBe([
         "name" => "xFrameOptionsPresent",
@@ -100,6 +108,8 @@ test("x frame options does not passes if the header is empty", function (): void
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["security"][0])->toBe([
         "name" => "xFrameOptionsPresent",
         "passes" => false,
@@ -119,6 +129,8 @@ test("x frame options does not passes if the header is not present", function ()
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["security"][0])->toBe([
         "name" => "xFrameOptionsPresent",

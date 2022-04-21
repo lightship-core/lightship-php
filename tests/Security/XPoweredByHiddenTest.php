@@ -20,6 +20,8 @@ test("x powered by passes if the header is not present", function (): void {
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["security"][3])->toBe([
         "name" => "xPoweredByHidden",
         "passes" => true,
@@ -40,6 +42,8 @@ test("x powered by passes if the header is empty", function (): void {
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["security"][3])->toBe([
         "name" => "xPoweredByHidden",
         "passes" => true,
@@ -59,6 +63,8 @@ test("x powered by does not pass if the header is filled", function (): void {
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["security"][3])->toBe([
         "name" => "xPoweredByHidden",

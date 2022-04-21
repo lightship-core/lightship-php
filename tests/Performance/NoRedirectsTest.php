@@ -22,6 +22,8 @@ test("no redirects passes if the response was not behind any redirects", functio
 
     $data = $lightship->toArray();
 
+    assert(is_array($data[0]));
+
     expect($data[0]["performance"][1])->toBe([
         "name" => "noRedirects",
         "passes" => true,
@@ -49,6 +51,8 @@ test("no redirects does not pass if the response was behind a redirection", func
         ->analyse();
 
     $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
 
     expect($data[0]["performance"][1])->toBe([
         "name" => "noRedirects",
