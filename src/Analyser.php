@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\TransferStats;
 use Khalyomede\Rules\Accessibility\MetaViewportPresent;
+use Khalyomede\Rules\Accessibility\UseLandmarkTags;
 use Khalyomede\Rules\Performance\FastResponseTime;
 use Khalyomede\Rules\Performance\NoRedirects;
 use Khalyomede\Rules\Performance\TextCompressionEnabled;
@@ -66,6 +67,7 @@ class Analyser
             UsesHttp2::fromResponse($response)->toReport(),
             // Accessibility
             MetaViewportPresent::fromResponse($response)->toReport(),
+            UseLandmarkTags::fromResponse($response)->toReport(),
         ];
     }
 
