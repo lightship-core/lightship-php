@@ -5,6 +5,12 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Khalyomede\Lightship;
+use Khalyomede\Rules\Seo\TitlePresent;
+use Khalyomede\RuleType;
+
+test("titlePresent is a seo rule", function (): void {
+    expect((new TitlePresent())->ruleType())->toBe(RuleType::Seo);
+});
 
 test('test titlePresent does pass when the title tag is filled', function (): void {
     $client = new Client([

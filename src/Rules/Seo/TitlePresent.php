@@ -27,7 +27,7 @@ class TitlePresent extends BaseRule implements Rule
 
     public function ruleType(): RuleType
     {
-        return RuleType::Security;
+        return RuleType::Seo;
     }
 
     private function passes(): bool

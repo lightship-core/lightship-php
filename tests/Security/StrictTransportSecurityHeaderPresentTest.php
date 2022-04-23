@@ -5,6 +5,12 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Khalyomede\Lightship;
+use Khalyomede\Rules\Security\StrictTransportSecurityHeaderPresent;
+use Khalyomede\RuleType;
+
+test("strict transport security header is a security rule", function (): void {
+    expect((new StrictTransportSecurityHeaderPresent())->ruleType())->toBe(RuleType::Security);
+});
 
 test("strict transport security header present passes if the header has a max-age value", function (): void {
     $client = new Client([

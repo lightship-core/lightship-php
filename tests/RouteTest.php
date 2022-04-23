@@ -32,3 +32,22 @@ test("set route and queries", function (): void {
 test("throws exception when setting empty path", function (): void {
     expect(fn () => (new Route())->setPath(""))->toThrow(InvalidArgumentException::class);
 });
+
+test("queries list returns queries formatted for Guzzle", function (): void {
+    $faker = Factory::create();
+    $query1Key = $faker->text();
+    $query1Value = $faker->text();
+    $query2Key = $faker->text();
+    $query2Value = $faker->text();
+
+    $route = (new Route())
+        ->setQueries([
+            (new Query())->setKey($query1Key)->setValue($query1Value),
+            (new Query())->setKey($query2Key)->setValue($query2Value),
+        ]);
+
+    expect($route->queriesList())->toBe([
+        rawurlencode($query1Key) => rawurlencode($query1Value),
+        rawurlencode($query2Key) => rawurlencode($query2Value),
+    ]);
+});

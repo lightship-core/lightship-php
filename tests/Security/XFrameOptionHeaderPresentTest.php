@@ -5,6 +5,12 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Khalyomede\Lightship;
+use Khalyomede\Rules\Security\XFrameOptionHeaderPresent;
+use Khalyomede\RuleType;
+
+test("x frame options is a security rule", function (): void {
+    expect((new XFrameOptionHeaderPresent())->ruleType())->toBe(RuleType::Security);
+});
 
 test("x frame options passes if the header is deny", function (): void {
     $client = new Client([

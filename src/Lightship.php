@@ -85,9 +85,10 @@ class Lightship
              * @var array<Query>
              */
             $q = array_map(
-                fn (array $query): Query => (new Query())
-                    ->setKey($query["key"] ?? "")
-                    ->setValue($query["value"] ?? ""),
+                fn (string $key, string $value): Query => (new Query())
+                    ->setKey($key)
+                    ->setValue($value),
+                array_keys($queries),
                 $queries
             );
 

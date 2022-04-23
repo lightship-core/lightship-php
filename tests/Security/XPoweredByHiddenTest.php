@@ -5,6 +5,12 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Khalyomede\Lightship;
+use Khalyomede\Rules\Security\XPoweredByHidden;
+use Khalyomede\RuleType;
+
+test("x powered by is a security rule", function (): void {
+    expect((new XPoweredByHidden())->ruleType())->toBe(RuleType::Security);
+});
 
 test("x powered by passes if the header is not present", function (): void {
     $client = new Client([
