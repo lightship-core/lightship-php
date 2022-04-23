@@ -10,5 +10,5 @@ interface Rule
 
     public function toReport(): RuleReport;
 
-    public function ruleType(): RuleType;
+    public function type(): RuleType;
 }

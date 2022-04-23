@@ -9,7 +9,7 @@ use Khalyomede\Rules\Security\ServerHeaderHidden;
 use Khalyomede\RuleType;
 
 test("server header hidden is a security rule", function (): void {
-    expect((new ServerHeaderHidden())->ruleType())->toBe(RuleType::Security);
+    expect((new ServerHeaderHidden())->type())->toBe(RuleType::Security);
 });
 
 test("server header hidden passes if the header is not present", function (): void {

@@ -6,33 +6,19 @@ use DOMAttr;
 use DOMDocument;
 use DOMNamedNodeMap;
 use DOMNode;
-use Khalyomede\Rule;
-use Khalyomede\RuleReport;
 use Khalyomede\Rules\BaseRule;
 use Khalyomede\RuleType;
 
-class LangPresent extends BaseRule implements Rule
+class LangPresent extends BaseRule
 {
-    public function toReport(): RuleReport
+    public function __construct()
     {
-        $report = new RuleReport();
-
-        $passes = $this->passes();
-
-        $report->setRuleType(RuleType::Seo)
-            ->setName("langPresent")
-            ->setPasses($passes)
-            ->setScore($passes ? 50 : 0);
-
-        return $report;
+        $this->name = "langPresent";
+        $this->value = 50;
+        $this->type = RuleType::Seo;
     }
 
-    public function ruleType(): RuleType
-    {
-        return RuleType::Seo;
-    }
-
-    private function passes(): bool
+    protected function passes(): bool
     {
         libxml_use_internal_errors(true);
 

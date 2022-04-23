@@ -2,30 +2,16 @@
 
 namespace Khalyomede\Rules\Performance;
 
-use Khalyomede\Rule;
-use Khalyomede\RuleReport;
 use Khalyomede\Rules\BaseRule;
 use Khalyomede\RuleType;
 
-class UsesHttp2 extends BaseRule implements Rule
+class UsesHttp2 extends BaseRule
 {
-    public function ruleType(): RuleType
+    public function __construct()
     {
-        return RuleType::Performance;
-    }
-
-    public function toReport(): RuleReport
-    {
-        $report = new RuleReport();
-
-        $passes = $this->passes();
-
-        $report->setRuleType($this->ruleType())
-            ->setName("usesHttp2")
-            ->setPasses($passes)
-            ->setScore($passes ? 25 : 0);
-
-        return $report;
+        $this->name = "usesHttp2";
+        $this->value = 25;
+        $this->type = RuleType::Performance;
     }
 
     public function passes(): bool

@@ -9,7 +9,7 @@ use Khalyomede\Rules\Security\StrictTransportSecurityHeaderPresent;
 use Khalyomede\RuleType;
 
 test("strict transport security header is a security rule", function (): void {
-    expect((new StrictTransportSecurityHeaderPresent())->ruleType())->toBe(RuleType::Security);
+    expect((new StrictTransportSecurityHeaderPresent())->type())->toBe(RuleType::Security);
 });
 
 test("strict transport security header present passes if the header has a max-age value", function (): void {

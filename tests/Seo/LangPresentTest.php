@@ -9,7 +9,7 @@ use Khalyomede\Rules\Seo\LangPresent;
 use Khalyomede\RuleType;
 
 test("langPresent is a seo rule", function (): void {
-    expect((new LangPresent())->ruleType())->toBe(RuleType::Seo);
+    expect((new LangPresent())->type())->toBe(RuleType::Seo);
 });
 
 test("lang present passes if the lang is defined in the html tag", function (): void {

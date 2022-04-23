@@ -2,33 +2,19 @@
 
 namespace Khalyomede\Rules\Performance;
 
-use Khalyomede\Rule;
-use Khalyomede\RuleReport;
 use Khalyomede\Rules\BaseRule;
 use Khalyomede\RuleType;
 
-class FastResponseTime extends BaseRule implements Rule
+class FastResponseTime extends BaseRule
 {
-    public function ruleType(): RuleType
+    public function __construct()
     {
-        return RuleType::Performance;
+        $this->name = "fastResponseTime";
+        $this->value = 25;
+        $this->type = RuleType::Performance;
     }
 
-    public function toReport(): RuleReport
-    {
-        $report = new RuleReport();
-
-        $passes = $this->passes();
-
-        $report->setRuleType($this->ruleType())
-            ->setName("fastResponseTime")
-            ->setPasses($passes)
-            ->setScore($passes ? 25 : 0);
-
-        return $report;
-    }
-
-    public function passes(): bool
+    protected function passes(): bool
     {
         return $this->response->getResponseTimeInSeconds() <= 1.0;
     }

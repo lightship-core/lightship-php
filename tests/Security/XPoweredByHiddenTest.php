@@ -9,7 +9,7 @@ use Khalyomede\Rules\Security\XPoweredByHidden;
 use Khalyomede\RuleType;
 
 test("x powered by is a security rule", function (): void {
-    expect((new XPoweredByHidden())->ruleType())->toBe(RuleType::Security);
+    expect((new XPoweredByHidden())->type())->toBe(RuleType::Security);
 });
 
 test("x powered by passes if the header is not present", function (): void {

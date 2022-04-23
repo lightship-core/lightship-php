@@ -2,33 +2,19 @@
 
 namespace Khalyomede\Rules\Security;
 
-use Khalyomede\Rule;
-use Khalyomede\RuleReport;
 use Khalyomede\Rules\BaseRule;
 use Khalyomede\RuleType;
 
-class StrictTransportSecurityHeaderPresent extends BaseRule implements Rule
+class StrictTransportSecurityHeaderPresent extends BaseRule
 {
-    public function toReport(): RuleReport
+    public function __construct()
     {
-        $report = new RuleReport();
-
-        $passes = $this->passes();
-
-        $report->setRuleType(RuleType::Security)
-            ->setName("strictTransportSecurityHeaderPresent")
-            ->setPasses($passes)
-            ->setScore($passes ? 25 : 0);
-
-        return $report;
+        $this->name = "strictTransportSecurityHeaderPresent";
+        $this->value = 25;
+        $this->type = RuleType::Security;
     }
 
-    public function ruleType(): RuleType
-    {
-        return RuleType::Security;
-    }
-
-    private function passes(): bool
+    protected function passes(): bool
     {
         $headers = $this->response->getHeaders();
 

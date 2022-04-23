@@ -9,7 +9,7 @@ use Khalyomede\Rules\Seo\TitlePresent;
 use Khalyomede\RuleType;
 
 test("titlePresent is a seo rule", function (): void {
-    expect((new TitlePresent())->ruleType())->toBe(RuleType::Seo);
+    expect((new TitlePresent())->type())->toBe(RuleType::Seo);
 });
 
 test('test titlePresent does pass when the title tag is filled', function (): void {
