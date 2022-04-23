@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\TransferStats;
 use Khalyomede\Rules\Accessibility\ButtonsAndLinksUseAccessibleName;
+use Khalyomede\Rules\Accessibility\IdsAreUnique;
 use Khalyomede\Rules\Accessibility\MetaViewportPresent;
 use Khalyomede\Rules\Accessibility\UseLandmarkTags;
 use Khalyomede\Rules\Performance\FastResponseTime;
@@ -70,6 +71,7 @@ class Analyser
             MetaViewportPresent::fromResponse($response)->toReport(),
             UseLandmarkTags::fromResponse($response)->toReport(),
             ButtonsAndLinksUseAccessibleName::fromResponse($response)->toReport(),
+            IdsAreUnique::fromResponse($response)->toReport(),
         ];
     }
 
