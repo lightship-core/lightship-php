@@ -5,6 +5,7 @@ namespace Khalyomede;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\TransferStats;
+use Khalyomede\Rules\Accessibility\ButtonsAndLinksUseAccessibleName;
 use Khalyomede\Rules\Accessibility\MetaViewportPresent;
 use Khalyomede\Rules\Accessibility\UseLandmarkTags;
 use Khalyomede\Rules\Performance\FastResponseTime;
@@ -68,6 +69,7 @@ class Analyser
             // Accessibility
             MetaViewportPresent::fromResponse($response)->toReport(),
             UseLandmarkTags::fromResponse($response)->toReport(),
+            ButtonsAndLinksUseAccessibleName::fromResponse($response)->toReport(),
         ];
     }
 
