@@ -55,10 +55,12 @@ class Report
                 "seo" => $this->score(RuleType::Seo),
                 "security" => $this->score(RuleType::Security),
                 "performance" => $this->score(RuleType::Performance),
+                "accessibility" => $this->score(RuleType::Accessibility),
             ],
             "seo" => $this->results(RuleType::Seo),
             "security" => $this->results(RuleType::Security),
             "performance" => $this->results(RuleType::Performance),
+            "accessibility" => $this->results(RuleType::Accessibility),
         ];
     }
 

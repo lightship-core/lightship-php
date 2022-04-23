@@ -5,7 +5,6 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Khalyomede\Lightship;
-use Khalyomede\Rules\Seo\LangPresent;
 use Khalyomede\Rules\Seo\MetaDescriptionPresent;
 use Khalyomede\RuleType;
 
@@ -16,7 +15,7 @@ test("meta description present is a seo rule", function (): void {
 test("meta description present passes if the tag is present and filled", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
-            new Response(200, [], "<meta name='description' value='foo'></meta>")
+            new Response(200, [], "<meta name='description' value='foo' />")
         ]))
     ]);
 
@@ -38,7 +37,7 @@ test("meta description present passes if the tag is present and filled", functio
 test("meta description present does not pass if the tag is present and has empty value", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
-            new Response(200, [], "<meta name='description' value=''></meta>")
+            new Response(200, [], "<meta name='description' value='' />")
         ]))
     ]);
 
@@ -60,7 +59,7 @@ test("meta description present does not pass if the tag is present and has empty
 test("meta description present does not pass if the tag is present and has no value", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
-            new Response(200, [], "<meta name='description'></meta>")
+            new Response(200, [], "<meta name='description' />")
         ]))
     ]);
 
@@ -82,7 +81,7 @@ test("meta description present does not pass if the tag is present and has no va
 test("meta description present does not pass if the tag is present and has no description attribute", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
-            new Response(200, [], "<meta name='foo'></meta>")
+            new Response(200, [], "<meta name='foo' />")
         ]))
     ]);
 
@@ -104,7 +103,7 @@ test("meta description present does not pass if the tag is present and has no de
 test("meta description present does not pass if the tag is present and has no name attribute", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
-            new Response(200, [], "<meta></meta>")
+            new Response(200, [], "<meta />")
         ]))
     ]);
 
