@@ -41,9 +41,9 @@ class MetaDescriptionPresent extends BaseRule
             }
 
             if ($name->nodeValue === "description") {
-                $value = $element->attributes->getNamedItem("value");
+                $content = $element->attributes->getNamedItem("content");
 
-                if (!($value instanceof DOMAttr) || empty(trim($value->nodeValue))) {
+                if (!($content instanceof DOMAttr) || empty(trim($content->nodeValue))) {
                     libxml_clear_errors();
 
                     return false;
@@ -51,7 +51,7 @@ class MetaDescriptionPresent extends BaseRule
 
                 libxml_clear_errors();
 
-                return !empty(trim($value->nodeValue));
+                return !empty(trim($content->nodeValue));
             }
         }
 

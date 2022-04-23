@@ -41,9 +41,9 @@ class MetaViewportPresent extends BaseRule
             }
 
             if ($name->nodeValue === "viewport") {
-                $value = $element->attributes->getNamedItem("content");
+                $content = $element->attributes->getNamedItem("content");
 
-                if (!($value instanceof DOMAttr) || empty(trim($value->nodeValue))) {
+                if (!($content instanceof DOMAttr) || empty(trim($content->nodeValue))) {
                     libxml_clear_errors();
 
                     return false;
@@ -51,7 +51,7 @@ class MetaViewportPresent extends BaseRule
 
                 libxml_clear_errors();
 
-                return str_starts_with($value->nodeValue, "width") || str_starts_with($value->nodeValue, "initial-scale");
+                return str_starts_with($content->nodeValue, "width") || str_starts_with($content->nodeValue, "initial-scale");
             }
         }
 

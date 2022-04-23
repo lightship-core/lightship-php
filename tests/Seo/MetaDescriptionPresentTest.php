@@ -15,7 +15,7 @@ test("meta description present is a seo rule", function (): void {
 test("meta description present passes if the tag is present and filled", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
-            new Response(200, [], "<meta name='description' value='foo' />")
+            new Response(200, [], "<meta name='description' content='foo' />")
         ]))
     ]);
 
@@ -34,10 +34,10 @@ test("meta description present passes if the tag is present and filled", functio
     ]);
 });
 
-test("meta description present does not pass if the tag is present and has empty value", function (): void {
+test("meta description present does not pass if the tag is present and has empty content", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
-            new Response(200, [], "<meta name='description' value='' />")
+            new Response(200, [], "<meta name='description' content='' />")
         ]))
     ]);
 
@@ -56,7 +56,7 @@ test("meta description present does not pass if the tag is present and has empty
     ]);
 });
 
-test("meta description present does not pass if the tag is present and has no value", function (): void {
+test("meta description present does not pass if the tag is present and has no content", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
             new Response(200, [], "<meta name='description' />")
