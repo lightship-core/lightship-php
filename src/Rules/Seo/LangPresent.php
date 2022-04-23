@@ -14,7 +14,7 @@ class LangPresent extends BaseRule
     public function __construct()
     {
         $this->name = "langPresent";
-        $this->value = 33;
+        $this->value = 25;
         $this->type = RuleType::Seo;
     }
 
