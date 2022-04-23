@@ -14,6 +14,7 @@ use Khalyomede\Rules\Security\StrictTransportSecurityHeaderPresent;
 use Khalyomede\Rules\Security\XFrameOptionHeaderPresent;
 use Khalyomede\Rules\Security\XPoweredByHidden;
 use Khalyomede\Rules\Seo\LangPresent;
+use Khalyomede\Rules\Seo\LinksDefineHref;
 use Khalyomede\Rules\Seo\TitlePresent;
 
 class Analyser
@@ -54,6 +55,7 @@ class Analyser
             // Seo
             TitlePresent::fromResponse($response)->toReport(),
             LangPresent::fromResponse($response)->toReport(),
+            LinksDefineHref::fromResponse($response)->toReport(),
             // Performance
             TextCompressionEnabled::fromResponse($response)->toReport(),
             NoRedirects::fromResponse($response)->toReport(),
