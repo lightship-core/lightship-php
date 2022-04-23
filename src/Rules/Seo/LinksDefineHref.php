@@ -28,6 +28,10 @@ class LinksDefineHref extends BaseRule
 
         $elements = $dom->getElementsByTagName("a");
 
+        if ($elements->count() === 0) {
+            return true;
+        }
+
         foreach (range(0, $elements->count()) as $index) {
             $element = $elements->item($index);
 

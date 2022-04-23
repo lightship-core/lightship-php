@@ -27,6 +27,10 @@ class MetaDescriptionPresent extends BaseRule
 
         $elements = $dom->getElementsByTagName("meta");
 
+        if ($elements->count() === 0) {
+            return true;
+        }
+
         foreach (range(0, $elements->count()) as $index) {
             $element = $elements->item($index);
 
