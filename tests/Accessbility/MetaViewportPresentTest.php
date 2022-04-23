@@ -56,6 +56,28 @@ test("meta viewport present passes if the tag is present and starts with initial
     ]);
 });
 
+test("meta viewport present pass if there is no meta tags", function (): void {
+    $client = new Client([
+        "handler" => HandlerStack::create(new MockHandler([
+            new Response(200, [], "<!DOCTYPE html>")
+        ]))
+    ]);
+
+    $lightship = new Lightship($client);
+
+    $lightship->route("https://example.com")
+        ->analyse();
+
+    $data = $lightship->toArray();
+
+    assert(is_array($data[0]));
+
+    expect($data[0]["accessibility"][0])->toBe([
+        "name" => "metaViewportPresent",
+        "passes" => true,
+    ]);
+});
+
 test("meta viewport present does not pass if the tag is present and has empty content", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
@@ -126,28 +148,6 @@ test("meta viewport present does not pass if the tag is present and has no name 
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
             new Response(200, [], "<meta> />")
-        ]))
-    ]);
-
-    $lightship = new Lightship($client);
-
-    $lightship->route("https://example.com")
-        ->analyse();
-
-    $data = $lightship->toArray();
-
-    assert(is_array($data[0]));
-
-    expect($data[0]["accessibility"][0])->toBe([
-        "name" => "metaViewportPresent",
-        "passes" => false,
-    ]);
-});
-
-test("meta viewport present does not pass if the tag is present and has no meta", function (): void {
-    $client = new Client([
-        "handler" => HandlerStack::create(new MockHandler([
-            new Response(200, [], "<!DOCTYPE html>")
         ]))
     ]);
 
