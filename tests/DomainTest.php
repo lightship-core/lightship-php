@@ -34,8 +34,8 @@ test("can set multiple routes", function (): void {
 
     $routes = $domain->routes();
 
-    expect($routes[0]->path() === $firstRoutePath);
-    expect($routes[1]->path() === $firstRoutePath);
+    expect($routes[0]->path())->toBe($firstRoutePath);
+    expect($routes[1]->path())->toBe($secondRoutePath);
 });
 
 test("setRoutes returns instance of Domain", function (): void {
