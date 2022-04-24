@@ -64,7 +64,7 @@ class Report
         ];
     }
 
-    private function score(RuleType $ruleType): int
+    public function score(RuleType $ruleType): int
     {
         return array_sum(
             array_map(
@@ -80,7 +80,7 @@ class Report
     /**
      * @return array<int, array<string, bool|string>>
      */
-    private function results(RuleType $ruleType): array
+    public function results(RuleType $ruleType): array
     {
         return array_map(
             fn (RuleReport $report): array => [

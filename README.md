@@ -60,6 +60,7 @@ Since my web app is fully server-side, all my tests are very fast, and do not re
 
 - [1. Simple example code-driver](#1-simple-example-code-driven)
 - [2. Simple example using a configuration file](#2-simple-example-using-a-configuration-file)
+- []()
 
 ### 1. Simple example code-driven
 
@@ -129,6 +130,32 @@ And here is our configuration file.
     }
   ]
 }
+```
+
+### 3. Set a response callback
+
+In this example, we will trigger our function after a response has been parsed and a report generated. Useful for cli programs.
+
+```php
+use Khalyomede\Lightship;
+
+require __DIR__ . "/vendor/autoload.php";
+
+$lightship = new Lightship();
+
+$lightship->route("https://example.com")
+  ->route("https://northerwind.com")
+  ->onReportedRoute(function (Route $route, Report $report): void {
+    echo "{$route->path()}: {$report->score(RuleType::Security)}" . PHP_EOL;
+  })
+  ->analyse();
+```
+
+This will display something like this:
+
+```bash
+https://example.com/: 38
+https://northerwind.com/: 61
 ```
 
 ## Tests

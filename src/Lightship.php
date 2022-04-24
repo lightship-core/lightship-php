@@ -109,7 +109,7 @@ class Lightship
 
             $this->reports[] = $report;
 
-            call_user_func($this->onReportedRouteCallback, [$route, $report]);
+            call_user_func($this->onReportedRouteCallback, $route, $report);
         }
     }
 
