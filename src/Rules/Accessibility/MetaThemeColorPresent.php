@@ -4,6 +4,7 @@ namespace Lightship\Rules\Accessibility;
 
 use DOMAttr;
 use DOMDocument;
+use DOMNamedNodeMap;
 use DOMNode;
 use Lightship\Rules\BaseRule;
 use Lightship\RuleType;
@@ -44,7 +45,13 @@ class MetaThemeColorPresent extends BaseRule
                 continue;
             }
 
-            $name = $element->attributes->getNamedItem("name");
+            $attributes = $element->attributes;
+
+            if (!($attributes instanceof DOMNamedNodeMap)) {
+                continue;
+            }
+
+            $name = $attributes->getNamedItem("name");
 
             if (!($name instanceof DOMAttr)) {
                 continue;
@@ -54,13 +61,13 @@ class MetaThemeColorPresent extends BaseRule
                 continue;
             }
 
-            $content = $element->attributes->getNamedItem("content");
+            $content = $attributes->getNamedItem("content");
 
             if (!($content instanceof DOMAttr)) {
                 continue;
             }
 
-            if (!empty(trim($content->nodeValue))) {
+            if (!empty(trim($content->nodeValue ?? ""))) {
                 libxml_clear_errors();
 
                 return true;

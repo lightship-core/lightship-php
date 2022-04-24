@@ -4,12 +4,16 @@ namespace Lightship\Rules\Accessibility;
 
 use DOMAttr;
 use DOMDocument;
+use DOMNamedNodeMap;
 use DOMNode;
 use Lightship\Rules\BaseRule;
 use Lightship\RuleType;
 
 class IdsAreUnique extends BaseRule
 {
+    /**
+     * @var array<string>
+     */
     protected array $ids = [];
 
     public function __construct()
@@ -47,7 +51,13 @@ class IdsAreUnique extends BaseRule
                 continue;
             }
 
-            $id = $element->attributes->getNamedItem("id");
+            $attributes = $element->attributes;
+
+            if (!($attributes instanceof DOMNamedNodeMap)) {
+                continue;
+            }
+
+            $id = $attributes->getNamedItem("id");
 
             if (!($id instanceof DOMAttr) || empty($id->nodeValue)) {
                 continue;

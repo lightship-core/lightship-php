@@ -4,6 +4,7 @@ namespace Lightship\Rules\Seo;
 
 use DOMAttr;
 use DOMDocument;
+use DOMNamedNodeMap;
 use DOMNode;
 use Lightship\Rules\BaseRule;
 use Lightship\RuleType;
@@ -44,16 +45,22 @@ class MetaDescriptionPresent extends BaseRule
                 continue;
             }
 
-            $name = $element->attributes->getNamedItem("name");
+            $attributes = $element->attributes;
 
-            if (!($name instanceof DOMAttr) || empty(trim($name->nodeValue))) {
+            if (!($attributes instanceof DOMNamedNodeMap)) {
+                continue;
+            }
+
+            $name = $attributes->getNamedItem("name");
+
+            if (!($name instanceof DOMAttr) || empty(trim($name->nodeValue ?? ""))) {
                 continue;
             }
 
             if ($name->nodeValue === "description") {
-                $content = $element->attributes->getNamedItem("content");
+                $content = $attributes->getNamedItem("content");
 
-                if (!($content instanceof DOMAttr) || empty(trim($content->nodeValue))) {
+                if (!($content instanceof DOMAttr) || empty(trim($content->nodeValue ?? ""))) {
                     libxml_clear_errors();
 
                     return false;
@@ -61,7 +68,7 @@ class MetaDescriptionPresent extends BaseRule
 
                 libxml_clear_errors();
 
-                return !empty(trim($content->nodeValue));
+                return mb_strlen(trim($content->nodeValue ?? "")) > 0;
             }
         }
 

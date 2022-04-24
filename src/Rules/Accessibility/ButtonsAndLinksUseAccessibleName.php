@@ -4,6 +4,7 @@ namespace Lightship\Rules\Accessibility;
 
 use DOMAttr;
 use DOMDocument;
+use DOMNamedNodeMap;
 use DOMNode;
 use Lightship\Rules\BaseRule;
 use Lightship\RuleType;
@@ -54,7 +55,13 @@ class ButtonsAndLinksUseAccessibleName extends BaseRule
                 continue;
             }
 
-            $ariaLabel = $element->attributes->getNamedItem("aria-label");
+            $attributes = $element->attributes;
+
+            if (!($attributes instanceof DOMNamedNodeMap)) {
+                continue;
+            }
+
+            $ariaLabel = $attributes->getNamedItem("aria-label");
 
             if (!($ariaLabel instanceof DOMAttr)) {
                 libxml_clear_errors();
@@ -62,7 +69,7 @@ class ButtonsAndLinksUseAccessibleName extends BaseRule
                 return false;
             }
 
-            if (empty($ariaLabel)) {
+            if (empty($ariaLabel->nodeValue ?? "")) {
                 libxml_clear_errors();
 
                 return false;

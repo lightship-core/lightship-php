@@ -4,6 +4,7 @@ namespace Lightship\Rules\Accessibility;
 
 use DOMAttr;
 use DOMDocument;
+use DOMNamedNodeMap;
 use DOMNode;
 use Lightship\Rules\BaseRule;
 use Lightship\RuleType;
@@ -44,9 +45,15 @@ class ImagesHaveAltAttributes extends BaseRule
                 continue;
             }
 
-            $alt = $element->attributes->getNamedItem("alt");
+            $attributes = $element->attributes;
 
-            if (!($alt instanceof DOMAttr) || empty(trim($alt->nodeValue))) {
+            if (!($attributes instanceof DOMNamedNodeMap)) {
+                continue;
+            }
+
+            $alt = $attributes->getNamedItem("alt");
+
+            if (!($alt instanceof DOMAttr) || empty(trim($alt->nodeValue ?? ""))) {
                 libxml_clear_errors();
 
                 return false;

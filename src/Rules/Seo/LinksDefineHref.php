@@ -4,6 +4,7 @@ namespace Lightship\Rules\Seo;
 
 use DOMAttr;
 use DOMDocument;
+use DOMNamedNodeMap;
 use DOMNode;
 use Lightship\Rules\BaseRule;
 use Lightship\RuleType;
@@ -45,9 +46,15 @@ class LinksDefineHref extends BaseRule
                 continue;
             }
 
-            $attribute = $element->attributes->getNamedItem("href");
+            $attributes = $element->attributes;
 
-            if (!($attribute instanceof DOMAttr) || empty(trim($attribute->nodeValue))) {
+            if (!($attributes instanceof DOMNamedNodeMap)) {
+                continue;
+            }
+
+            $attribute = $attributes->getNamedItem("href");
+
+            if (!($attribute instanceof DOMAttr) || empty(trim($attribute->nodeValue ?? ""))) {
                 $allTagsDefineHref = false;
             }
         }
