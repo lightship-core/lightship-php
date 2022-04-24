@@ -161,6 +161,7 @@ https://northerwind.com/: 61
 ## Tests
 
 ```bash
+composer check-platform-reqs
 composer install
 composer run analyse
 composer run test
