@@ -63,7 +63,7 @@ class IdsAreUnique extends BaseRule
                 continue;
             }
 
-            if (!in_array($id->nodeValue, $this->ids)) {
+            if (!in_array($id->nodeValue, $this->ids, true)) {
                 $this->ids[] = $id->nodeValue;
 
                 continue;

@@ -2,8 +2,6 @@
 
 namespace Lightship\Rules\Accessibility;
 
-use DOMDocument;
-use DOMDocumentType;
 use Lightship\Rules\BaseRule;
 use Lightship\RuleType;
 

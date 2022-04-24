@@ -46,13 +46,13 @@ class BaseRule implements Rule
         return $report;
     }
 
-    protected function passes(): bool
-    {
-        return false;
-    }
-
     public function type(): RuleType
     {
         return $this->type;
+    }
+
+    protected function passes(): bool
+    {
+        return false;
     }
 }
