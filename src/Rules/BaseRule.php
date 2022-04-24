@@ -1,11 +1,11 @@
 <?php
 
-namespace Khalyomede\Rules;
+namespace Lightship\Rules;
 
-use Khalyomede\Response;
-use Khalyomede\Rule;
-use Khalyomede\RuleReport;
-use Khalyomede\RuleType;
+use Lightship\Response;
+use Lightship\Rule;
+use Lightship\RuleReport;
+use Lightship\RuleType;
 
 class BaseRule implements Rule
 {

@@ -4,7 +4,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
+use Lightship\Lightship;
 use Psr\Http\Message\RequestInterface;
 
 test("fast response time passes if the server responded in <= 1s", function (): void {

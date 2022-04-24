@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Security\XPoweredByHidden;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Security\XPoweredByHidden;
+use Lightship\RuleType;
 
 test("x powered by is a security rule", function (): void {
     expect((new XPoweredByHidden())->type())->toBe(RuleType::Security);

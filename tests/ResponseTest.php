@@ -2,7 +2,7 @@
 
 use Faker\Factory;
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
-use Khalyomede\Response;
+use Lightship\Response;
 
 test("returns status code", function (): void {
     $faker = Factory::create();

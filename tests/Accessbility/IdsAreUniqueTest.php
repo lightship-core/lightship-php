@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Accessibility\IdsAreUnique;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Accessibility\IdsAreUnique;
+use Lightship\RuleType;
 
 test("ids are unique is an accessibility rule", function (): void {
     expect((new IdsAreUnique())->type())->toBe(RuleType::Accessibility);

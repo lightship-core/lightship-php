@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Seo\LangPresent;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Seo\LangPresent;
+use Lightship\RuleType;
 
 test("langPresent is a seo rule", function (): void {
     expect((new LangPresent())->type())->toBe(RuleType::Seo);

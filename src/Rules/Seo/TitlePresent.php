@@ -1,11 +1,11 @@
 <?php
 
-namespace Khalyomede\Rules\Seo;
+namespace Lightship\Rules\Seo;
 
 use DOMDocument;
 use DOMNode;
-use Khalyomede\Rules\BaseRule;
-use Khalyomede\RuleType;
+use Lightship\Rules\BaseRule;
+use Lightship\RuleType;
 
 class TitlePresent extends BaseRule
 {

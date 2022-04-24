@@ -1,6 +1,6 @@
 <?php
 
-namespace Khalyomede;
+namespace Lightship;
 
 use GuzzleHttp\Psr7\Response as Psr7Response;
 use Psr\Http\Message\ResponseInterface;

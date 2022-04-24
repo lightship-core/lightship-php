@@ -1,6 +1,6 @@
 # Lightship
 
-Web page performance and SEO analysis, browser-less.
+Web page performance/seo/security/accessibility analysis, browser-less.
 
 ```json
 [
@@ -69,7 +69,7 @@ In this example, we will configure our web pages using the code.
 ```php
 require __DIR__ . "/vendor/autoload.php";
 
-use Khalyomede\Lightship;
+use Lightship\Lightship;
 
 $lightship = new Lightship();
 
@@ -89,7 +89,7 @@ In this example, we will tell Lightship to use our "lightship.json" file instead
 ```php
 require __DIR__ . "/vendor/autoload.php";
 
-use Khalyomede\Lightship;
+use Lightship\Lightship;
 
 $lightship = new Lightship();
 
@@ -137,7 +137,7 @@ And here is our configuration file.
 In this example, we will trigger our function after a response has been parsed and a report generated. Useful for cli programs.
 
 ```php
-use Khalyomede\Lightship;
+use Lightship\Lightship;
 
 require __DIR__ . "/vendor/autoload.php";
 

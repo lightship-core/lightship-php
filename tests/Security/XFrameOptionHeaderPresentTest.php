@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Security\XFrameOptionHeaderPresent;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Security\XFrameOptionHeaderPresent;
+use Lightship\RuleType;
 
 test("x frame options is a security rule", function (): void {
     expect((new XFrameOptionHeaderPresent())->type())->toBe(RuleType::Security);

@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Security\ServerHeaderHidden;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Security\ServerHeaderHidden;
+use Lightship\RuleType;
 
 test("server header hidden is a security rule", function (): void {
     expect((new ServerHeaderHidden())->type())->toBe(RuleType::Security);

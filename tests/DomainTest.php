@@ -1,9 +1,9 @@
 <?php
 
 use Faker\Factory;
-use Khalyomede\Domain;
-use Khalyomede\Query;
-use Khalyomede\Route;
+use Lightship\Domain;
+use Lightship\Query;
+use Lightship\Route;
 
 test("can set base", function (): void {
     $faker = Factory::create();

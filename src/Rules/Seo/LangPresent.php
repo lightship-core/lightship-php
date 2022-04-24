@@ -1,13 +1,13 @@
 <?php
 
-namespace Khalyomede\Rules\Seo;
+namespace Lightship\Rules\Seo;
 
 use DOMAttr;
 use DOMDocument;
 use DOMNamedNodeMap;
 use DOMNode;
-use Khalyomede\Rules\BaseRule;
-use Khalyomede\RuleType;
+use Lightship\Rules\BaseRule;
+use Lightship\RuleType;
 
 class LangPresent extends BaseRule
 {

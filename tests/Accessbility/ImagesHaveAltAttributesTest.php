@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Accessibility\ImagesHaveAltAttributes;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Accessibility\ImagesHaveAltAttributes;
+use Lightship\RuleType;
 
 test("images have alt attributes is an accessibility rule", function (): void {
     expect((new ImagesHaveAltAttributes())->type())->toBe(RuleType::Accessibility);

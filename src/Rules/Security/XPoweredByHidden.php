@@ -1,9 +1,9 @@
 <?php
 
-namespace Khalyomede\Rules\Security;
+namespace Lightship\Rules\Security;
 
-use Khalyomede\Rules\BaseRule;
-use Khalyomede\RuleType;
+use Lightship\Rules\BaseRule;
+use Lightship\RuleType;
 
 class XPoweredByHidden extends BaseRule
 {

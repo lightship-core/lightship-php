@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Factory;
-use Khalyomede\Query;
-use Khalyomede\Route;
+use Lightship\Query;
+use Lightship\Route;
 
 test("set route and queries", function (): void {
     $faker = Factory::create();

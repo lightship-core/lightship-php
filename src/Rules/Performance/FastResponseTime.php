@@ -1,9 +1,9 @@
 <?php
 
-namespace Khalyomede\Rules\Performance;
+namespace Lightship\Rules\Performance;
 
-use Khalyomede\Rules\BaseRule;
-use Khalyomede\RuleType;
+use Lightship\Rules\BaseRule;
+use Lightship\RuleType;
 
 class FastResponseTime extends BaseRule
 {

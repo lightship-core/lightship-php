@@ -1,6 +1,6 @@
 <?php
 
-namespace Khalyomede;
+namespace Lightship;
 
 class Domain
 {

@@ -1,29 +1,29 @@
 <?php
 
-namespace Khalyomede;
+namespace Lightship;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\TransferStats;
-use Khalyomede\Rules\Accessibility\ButtonsAndLinksUseAccessibleName;
-use Khalyomede\Rules\Accessibility\DoctypeHtmlPresent;
-use Khalyomede\Rules\Accessibility\IdsAreUnique;
-use Khalyomede\Rules\Accessibility\ImagesHaveAltAttributes;
-use Khalyomede\Rules\Accessibility\MetaThemeColorPresent;
-use Khalyomede\Rules\Accessibility\MetaViewportPresent;
-use Khalyomede\Rules\Accessibility\UseLandmarkTags;
-use Khalyomede\Rules\Performance\FastResponseTime;
-use Khalyomede\Rules\Performance\NoRedirects;
-use Khalyomede\Rules\Performance\TextCompressionEnabled;
-use Khalyomede\Rules\Performance\UsesHttp2;
-use Khalyomede\Rules\Security\ServerHeaderHidden;
-use Khalyomede\Rules\Security\StrictTransportSecurityHeaderPresent;
-use Khalyomede\Rules\Security\XFrameOptionHeaderPresent;
-use Khalyomede\Rules\Security\XPoweredByHidden;
-use Khalyomede\Rules\Seo\LangPresent;
-use Khalyomede\Rules\Seo\LinksDefineHref;
-use Khalyomede\Rules\Seo\MetaDescriptionPresent;
-use Khalyomede\Rules\Seo\TitlePresent;
+use Lightship\Rules\Accessibility\ButtonsAndLinksUseAccessibleName;
+use Lightship\Rules\Accessibility\DoctypeHtmlPresent;
+use Lightship\Rules\Accessibility\IdsAreUnique;
+use Lightship\Rules\Accessibility\ImagesHaveAltAttributes;
+use Lightship\Rules\Accessibility\MetaThemeColorPresent;
+use Lightship\Rules\Accessibility\MetaViewportPresent;
+use Lightship\Rules\Accessibility\UseLandmarkTags;
+use Lightship\Rules\Performance\FastResponseTime;
+use Lightship\Rules\Performance\NoRedirects;
+use Lightship\Rules\Performance\TextCompressionEnabled;
+use Lightship\Rules\Performance\UsesHttp2;
+use Lightship\Rules\Security\ServerHeaderHidden;
+use Lightship\Rules\Security\StrictTransportSecurityHeaderPresent;
+use Lightship\Rules\Security\XFrameOptionHeaderPresent;
+use Lightship\Rules\Security\XPoweredByHidden;
+use Lightship\Rules\Seo\LangPresent;
+use Lightship\Rules\Seo\LinksDefineHref;
+use Lightship\Rules\Seo\MetaDescriptionPresent;
+use Lightship\Rules\Seo\TitlePresent;
 
 class Analyser
 {

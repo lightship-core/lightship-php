@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Factory;
-use Khalyomede\Query;
+use Lightship\Query;
 
 test("can set key and value", function (): void {
     $faker = Factory::create();

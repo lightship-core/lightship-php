@@ -4,7 +4,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
+use Lightship\Lightship;
 
 test("test uses http2 passes if the protocol is 2", function (): void {
     $client = new Client([

@@ -6,7 +6,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
-use Khalyomede\Lightship;
+use Lightship\Lightship;
 
 test("no redirects passes if the response was not behind any redirects", function (): void {
     $client = new Client([

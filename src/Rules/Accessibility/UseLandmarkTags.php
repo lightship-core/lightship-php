@@ -1,10 +1,10 @@
 <?php
 
-namespace Khalyomede\Rules\Accessibility;
+namespace Lightship\Rules\Accessibility;
 
 use DOMDocument;
-use Khalyomede\Rules\BaseRule;
-use Khalyomede\RuleType;
+use Lightship\Rules\BaseRule;
+use Lightship\RuleType;
 
 class UseLandmarkTags extends BaseRule
 {

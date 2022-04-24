@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Seo\MetaDescriptionPresent;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Seo\MetaDescriptionPresent;
+use Lightship\RuleType;
 
 test("meta description present is a seo rule", function (): void {
     expect((new MetaDescriptionPresent())->type())->toBe(RuleType::Seo);

@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Seo\LinksDefineHref;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Seo\LinksDefineHref;
+use Lightship\RuleType;
 
 test("links define href is a seo rule", function (): void {
     expect((new LinksDefineHref())->type())->toBe(RuleType::Seo);

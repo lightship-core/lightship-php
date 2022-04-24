@@ -1,12 +1,12 @@
 <?php
 
-namespace Khalyomede\Rules\Accessibility;
+namespace Lightship\Rules\Accessibility;
 
 use DOMAttr;
 use DOMDocument;
 use DOMNode;
-use Khalyomede\Rules\BaseRule;
-use Khalyomede\RuleType;
+use Lightship\Rules\BaseRule;
+use Lightship\RuleType;
 
 class ImagesHaveAltAttributes extends BaseRule
 {

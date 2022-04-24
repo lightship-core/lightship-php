@@ -4,7 +4,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
+use Lightship\Lightship;
 
 test("text compression enabled passes if the header is present and has gzip value", function (): void {
     $client = new Client([

@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Accessibility\MetaViewportPresent;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Accessibility\MetaViewportPresent;
+use Lightship\RuleType;
 
 test("meta viewport present is a seo rule", function (): void {
     expect((new MetaViewportPresent())->type())->toBe(RuleType::Accessibility);

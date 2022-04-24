@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Accessibility\DoctypeHtmlPresent;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Accessibility\DoctypeHtmlPresent;
+use Lightship\RuleType;
 
 test("doctype html present is an accessibility rule", function (): void {
     expect((new DoctypeHtmlPresent())->type())->toBe(RuleType::Accessibility);

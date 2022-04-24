@@ -5,10 +5,10 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Report;
-use Khalyomede\Route;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Report;
+use Lightship\Route;
+use Lightship\RuleType;
 
 test("it can set report callback", function (): void {
     $faker = Factory::create();

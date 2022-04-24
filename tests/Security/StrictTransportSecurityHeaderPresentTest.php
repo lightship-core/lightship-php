@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Security\StrictTransportSecurityHeaderPresent;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Security\StrictTransportSecurityHeaderPresent;
+use Lightship\RuleType;
 
 test("strict transport security header is a security rule", function (): void {
     expect((new StrictTransportSecurityHeaderPresent())->type())->toBe(RuleType::Security);

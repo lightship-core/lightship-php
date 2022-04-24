@@ -4,9 +4,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Khalyomede\Lightship;
-use Khalyomede\Rules\Accessibility\ButtonsAndLinksUseAccessibleName;
-use Khalyomede\RuleType;
+use Lightship\Lightship;
+use Lightship\Rules\Accessibility\ButtonsAndLinksUseAccessibleName;
+use Lightship\RuleType;
 
 test("buttons and links use accessible name is an accessibility rule", function (): void {
     expect((new ButtonsAndLinksUseAccessibleName())->type())->toBe(RuleType::Accessibility);
