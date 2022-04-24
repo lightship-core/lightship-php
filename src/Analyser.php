@@ -9,6 +9,7 @@ use Khalyomede\Rules\Accessibility\ButtonsAndLinksUseAccessibleName;
 use Khalyomede\Rules\Accessibility\DoctypeHtmlPresent;
 use Khalyomede\Rules\Accessibility\IdsAreUnique;
 use Khalyomede\Rules\Accessibility\ImagesHaveAltAttributes;
+use Khalyomede\Rules\Accessibility\MetaThemeColorPresent;
 use Khalyomede\Rules\Accessibility\MetaViewportPresent;
 use Khalyomede\Rules\Accessibility\UseLandmarkTags;
 use Khalyomede\Rules\Performance\FastResponseTime;
@@ -76,6 +77,7 @@ class Analyser
             IdsAreUnique::fromResponse($response)->toReport(),
             ImagesHaveAltAttributes::fromResponse($response)->toReport(),
             DoctypeHtmlPresent::fromResponse($response)->toReport(),
+            MetaThemeColorPresent::fromResponse($response)->toReport(),
         ];
     }
 
