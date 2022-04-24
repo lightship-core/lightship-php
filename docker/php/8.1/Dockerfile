@@ -10,6 +10,7 @@ RUN apt-get update && \
     apt-get upgrade --yes && \
     apt-get install --yes \
     unzip \
+    curl \
     php8.1 \
     php8.1-zip \
     php8.1-curl \
