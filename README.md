@@ -60,7 +60,7 @@ Since my web app is fully server-side, all my tests are very fast, and do not re
 
 - [1. Simple example code-driver](#1-simple-example-code-driven)
 - [2. Simple example using a configuration file](#2-simple-example-using-a-configuration-file)
-- []()
+- [3. Set a response callback](#3-set-a-response-callback)
 
 ### 1. Simple example code-driven
 
