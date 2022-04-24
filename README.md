@@ -164,6 +164,10 @@ https://northerwind.com/: 61
 composer install
 composer run analyse
 composer run test
+composer run lint
+composer run install-security-checker
+composer run security-check
+composer run update-check
 ```
 
 ## Compatibility table
