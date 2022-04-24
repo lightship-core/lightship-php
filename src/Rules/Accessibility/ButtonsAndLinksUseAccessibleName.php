@@ -23,7 +23,13 @@ class ButtonsAndLinksUseAccessibleName extends BaseRule
 
         $dom = new DOMDocument();
 
-        $dom->loadHtml((string) $this->response->getBody());
+        $content = (string) $this->response->getBody();
+
+        if (empty(trim($content))) {
+            return true;
+        }
+
+        $dom->loadHtml($content);
 
         return $this->elementsHaveAccessibleName($dom, "button")
             && $this->elementsHaveAccessibleName($dom, "a");

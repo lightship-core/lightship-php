@@ -24,7 +24,13 @@ class LinksDefineHref extends BaseRule
         $dom = new DOMDocument();
         $allTagsDefineHref = true;
 
-        $dom->loadHtml((string) $this->response->getBody());
+        $content = (string) $this->response->getBody();
+
+        if (empty(trim($content))) {
+            return false;
+        }
+
+        $dom->loadHtml($content);
 
         $elements = $dom->getElementsByTagName("a");
 

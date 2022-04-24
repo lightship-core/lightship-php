@@ -24,7 +24,13 @@ class LangPresent extends BaseRule
 
         $dom = new DOMDocument();
 
-        $dom->loadHtml((string) $this->response->getBody());
+        $content = (string) $this->response->getBody();
+
+        if (empty(trim($content))) {
+            return false;
+        }
+
+        $dom->loadHtml($content);
 
         $element = $dom->getElementsByTagName("html")->item(0);
 

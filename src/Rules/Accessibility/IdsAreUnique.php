@@ -26,7 +26,13 @@ class IdsAreUnique extends BaseRule
 
         $dom = new DOMDocument();
 
-        $dom->loadHtml((string) $this->response->getBody());
+        $content = (string) $this->response->getBody();
+
+        if (empty(trim($content))) {
+            return true;
+        }
+
+        $dom->loadHtml($content);
 
         $elements = $dom->getElementsByTagName("*");
 
