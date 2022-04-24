@@ -5,11 +5,11 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Khalyomede\Lightship;
-use Khalyomede\Rules\Accessibility\MetaViewportPresent;
+use Khalyomede\Rules\Accessibility\ButtonsAndLinksUseAccessibleName;
 use Khalyomede\RuleType;
 
 test("buttons and links use accessible name is an accessibility rule", function (): void {
-    expect((new MetaViewportPresent())->type())->toBe(RuleType::Accessibility);
+    expect((new ButtonsAndLinksUseAccessibleName())->type())->toBe(RuleType::Accessibility);
 });
 
 test("buttons and links use accessible name passes if all buttons and links have a name", function (): void {

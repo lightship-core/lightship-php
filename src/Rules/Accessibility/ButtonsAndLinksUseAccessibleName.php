@@ -41,7 +41,7 @@ class ButtonsAndLinksUseAccessibleName extends BaseRule
             $element = $elements->item($index);
 
             if (!($element instanceof DOMNode)) {
-                return false;
+                continue;
             }
 
             if (!empty($element->nodeValue)) {
@@ -50,18 +50,20 @@ class ButtonsAndLinksUseAccessibleName extends BaseRule
 
             $ariaLabel = $element->attributes->getNamedItem("aria-label");
 
-            if (!($name instanceof DOMAttr) || empty(trim($name->nodeValue))) {
+            if (!($ariaLabel instanceof DOMAttr)) {
+                libxml_clear_errors();
+
                 return false;
             }
 
             if (empty($ariaLabel)) {
+                libxml_clear_errors();
+
                 return false;
             }
         }
 
         libxml_clear_errors();
-
-
 
         return true;
     }
