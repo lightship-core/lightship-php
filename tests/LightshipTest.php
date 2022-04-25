@@ -55,7 +55,7 @@ test("it can generate json report", function (): void {
         ->analyse();
 
     expect($lighship->toPrettyJson())->toBe(file_get_contents(__DIR__ . "/misc/report.json"));
-})->only();
+});
 
 test("it can use lightship.json", function (): void {
     $client = new Client([
