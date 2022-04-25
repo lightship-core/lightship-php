@@ -22,7 +22,10 @@ test("set route and queries", function (): void {
                 ->setValue($secondQueryValue)
         ]);
 
-    expect($route->path())->toBe($path);
+    expect($route->path())->toBe($path . "?" . http_build_query([
+        rawurlencode($firstQueryKey) => rawurlencode($firstQueryValue),
+        rawurlencode($secondQueryKey) => rawurlencode($secondQueryValue),
+    ]));
     expect($route->queries()[0]->key())->toBe(rawurlencode($firstQueryKey));
     expect($route->queries()[0]->value())->toBe(rawurlencode($firstQueryValue));
     expect($route->queries()[1]->key())->toBe(rawurlencode($secondQueryKey));

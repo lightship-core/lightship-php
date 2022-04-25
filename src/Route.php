@@ -40,7 +40,7 @@ class Route
 
     public function path(): string
     {
-        return $this->path;
+        return $this->path . ($this->hasQueries() ? "?" . http_build_query($this->queriesList()) : "");
     }
 
     /**
@@ -63,5 +63,10 @@ class Route
         }
 
         return $list;
+    }
+
+    protected function hasQueries(): bool
+    {
+        return count($this->queries) > 0;
     }
 }

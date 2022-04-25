@@ -1,0 +1,190 @@
+[
+    {
+        "url": "https:\/\/example.com\/contact-us\/?theme=dark",
+        "durationInSeconds": 0,
+        "scores": {
+            "seo": 0,
+            "security": 50,
+            "performance": 50,
+            "accessibility": 38
+        },
+        "seo": [
+            {
+                "name": "titlePresent",
+                "passes": false
+            },
+            {
+                "name": "langPresent",
+                "passes": false
+            },
+            {
+                "name": "linksDefineHref",
+                "passes": false
+            },
+            {
+                "name": "metaDescriptionPresent",
+                "passes": false
+            }
+        ],
+        "security": [
+            {
+                "name": "xFrameOptionsPresent",
+                "passes": false
+            },
+            {
+                "name": "strictTransportSecurityHeaderPresent",
+                "passes": false
+            },
+            {
+                "name": "serverHeaderHidden",
+                "passes": true
+            },
+            {
+                "name": "xPoweredByHidden",
+                "passes": true
+            }
+        ],
+        "performance": [
+            {
+                "name": "textCompressionEnabled",
+                "passes": false
+            },
+            {
+                "name": "noRedirects",
+                "passes": true
+            },
+            {
+                "name": "fastResponseTime",
+                "passes": true
+            },
+            {
+                "name": "usesHttp2",
+                "passes": false
+            }
+        ],
+        "accessibility": [
+            {
+                "name": "metaViewportPresent",
+                "passes": false
+            },
+            {
+                "name": "useLandmarkTags",
+                "passes": false
+            },
+            {
+                "name": "buttonsAndLinksUseAccessibleName",
+                "passes": true
+            },
+            {
+                "name": "idsAreUnique",
+                "passes": true
+            },
+            {
+                "name": "imagesHaveAltAttributes",
+                "passes": true
+            },
+            {
+                "name": "doctypeHtmlPresent",
+                "passes": false
+            },
+            {
+                "name": "metaThemeColorPresent",
+                "passes": false
+            }
+        ]
+    },
+    {
+        "url": "https:\/\/example.com\/?lang=en",
+        "durationInSeconds": 0,
+        "scores": {
+            "seo": 0,
+            "security": 50,
+            "performance": 50,
+            "accessibility": 38
+        },
+        "seo": [
+            {
+                "name": "titlePresent",
+                "passes": false
+            },
+            {
+                "name": "langPresent",
+                "passes": false
+            },
+            {
+                "name": "linksDefineHref",
+                "passes": false
+            },
+            {
+                "name": "metaDescriptionPresent",
+                "passes": false
+            }
+        ],
+        "security": [
+            {
+                "name": "xFrameOptionsPresent",
+                "passes": false
+            },
+            {
+                "name": "strictTransportSecurityHeaderPresent",
+                "passes": false
+            },
+            {
+                "name": "serverHeaderHidden",
+                "passes": true
+            },
+            {
+                "name": "xPoweredByHidden",
+                "passes": true
+            }
+        ],
+        "performance": [
+            {
+                "name": "textCompressionEnabled",
+                "passes": false
+            },
+            {
+                "name": "noRedirects",
+                "passes": true
+            },
+            {
+                "name": "fastResponseTime",
+                "passes": true
+            },
+            {
+                "name": "usesHttp2",
+                "passes": false
+            }
+        ],
+        "accessibility": [
+            {
+                "name": "metaViewportPresent",
+                "passes": false
+            },
+            {
+                "name": "useLandmarkTags",
+                "passes": false
+            },
+            {
+                "name": "buttonsAndLinksUseAccessibleName",
+                "passes": true
+            },
+            {
+                "name": "idsAreUnique",
+                "passes": true
+            },
+            {
+                "name": "imagesHaveAltAttributes",
+                "passes": true
+            },
+            {
+                "name": "doctypeHtmlPresent",
+                "passes": false
+            },
+            {
+                "name": "metaThemeColorPresent",
+                "passes": false
+            }
+        ]
+    }
+]

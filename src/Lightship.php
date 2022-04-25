@@ -35,7 +35,7 @@ class Lightship
         $this->client = $client instanceof Client ? $client : self::getHttpClient();
     }
 
-    public static function getHttpClient(): Client
+    protected static function getHttpClient(): Client
     {
         return new Client([
             RequestOptions::ALLOW_REDIRECTS => [
@@ -65,7 +65,7 @@ class Lightship
      */
     public function route(string $path, array $queries = []): self
     {
-        if (empty($this->domain) || !str_starts_with("http", $path)) {
+        if (empty($this->domain) || str_starts_with($path, "http")) {
             $r = new Route();
 
             $q = array_map(
@@ -122,7 +122,7 @@ class Lightship
 
     public function toJson(): string
     {
-        $json = json_encode($this->toArray());
+        $json = json_encode($this->toArray()) . "\n";
 
         if (!is_string($json)) {
             throw new Exception(json_last_error_msg());
@@ -141,7 +141,7 @@ class Lightship
 
     public function toPrettyJson(): string
     {
-        $json = json_encode($this->toArray(), JSON_PRETTY_PRINT);
+        $json = json_encode($this->toArray(), JSON_PRETTY_PRINT) . "\n";
 
         if (!is_string($json)) {
             throw new Exception(json_last_error_msg());

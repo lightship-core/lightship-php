@@ -18,6 +18,8 @@ test("can set multiple routes", function (): void {
     $domain = new Domain();
 
     $firstRoutePath = $faker->url();
+    $firstRouteQueryKey = $faker->text();
+    $firstRouteQueryValue = $faker->text();
     $secondRoutePath = $faker->url();
 
     $domain->setRoutes([
@@ -25,8 +27,8 @@ test("can set multiple routes", function (): void {
             ->setPath($firstRoutePath)
             ->setQueries([
                 (new Query())
-                    ->setKey($faker->text())
-                    ->setValue($faker->text())
+                    ->setKey($firstRouteQueryKey)
+                    ->setValue($firstRouteQueryValue)
             ]),
         (new Route())
             ->setPath($secondRoutePath),
@@ -34,7 +36,7 @@ test("can set multiple routes", function (): void {
 
     $routes = $domain->routes();
 
-    expect($routes[0]->path())->toBe($firstRoutePath);
+    expect($routes[0]->path())->toBe($firstRoutePath . "?" . http_build_query([rawurlencode($firstRouteQueryKey) => rawurlencode($firstRouteQueryValue)]));
     expect($routes[1]->path())->toBe($secondRoutePath);
 });
 

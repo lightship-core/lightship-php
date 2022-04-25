@@ -10,3 +10,6 @@ trim_trailing_whitespace = true
 
 [*.{json,yml,md}]
 indent_size = 2
+
+[tests/misc/report.json]
+indent_size = 4

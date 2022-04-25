@@ -1,0 +1,29 @@
+{
+  "routes": [
+    {
+      "path": "https://example.com/",
+      "queries": [
+        {
+          "key": "lang",
+          "value": "en"
+        }
+      ]
+    }
+  ],
+  "domains": [
+    {
+      "base": "https://example.com/",
+      "routes": [
+        {
+          "path": "/contact-us/",
+          "queries": [
+            {
+              "key": "theme",
+              "value": "dark"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
