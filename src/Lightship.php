@@ -35,19 +35,6 @@ class Lightship
         $this->client = $client instanceof Client ? $client : self::getHttpClient();
     }
 
-    protected static function getHttpClient(): Client
-    {
-        return new Client([
-            RequestOptions::ALLOW_REDIRECTS => [
-                "track_redirects" => true,
-            ],
-            'version' => '2.0',
-            RequestOptions::HEADERS => [
-                "Accept-Encoding" => "gzip,deflate,br",
-            ],
-        ]);
-    }
-
     /**
      * @todo Validate URL.
      */
@@ -219,5 +206,18 @@ class Lightship
         }
 
         return $this;
+    }
+
+    protected static function getHttpClient(): Client
+    {
+        return new Client([
+            RequestOptions::ALLOW_REDIRECTS => [
+                "track_redirects" => true,
+            ],
+            'version' => '2.0',
+            RequestOptions::HEADERS => [
+                "Accept-Encoding" => "gzip,deflate,br",
+            ],
+        ]);
     }
 }
