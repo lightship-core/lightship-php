@@ -76,7 +76,7 @@ test("it can use lightship.json", function (): void {
 test("it throws an exception when loading a config file that do not exist", function (): void {
     $faker = Factory::create();
 
-    expect(fn () => (new Lightship())->config($faker->filePath()))->toThrow(Exception::class, "File does not exist");
+    expect(fn () => (new Lightship())->config(__DIR__ . "/foo.json"))->toThrow(Exception::class, "File does not exist");
 });
 
 
