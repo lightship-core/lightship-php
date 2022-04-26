@@ -4,12 +4,12 @@ namespace Lightship;
 
 class Domain
 {
-    private string $base;
+    protected string $base;
 
     /**
      * @var array<Route>
      */
-    private array $routes;
+    protected array $routes;
 
     public function __construct()
     {

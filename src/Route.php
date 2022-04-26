@@ -6,12 +6,12 @@ use Webmozart\Assert\Assert;
 
 class Route
 {
-    private string $path;
+    protected string $path;
 
     /**
      * @var array<Query>
      */
-    private array $queries;
+    protected array $queries;
 
     public function __construct()
     {

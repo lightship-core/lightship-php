@@ -8,7 +8,7 @@ use Psr\Http\Message\StreamInterface;
 
 class Response implements ResponseInterface
 {
-    public function __construct(private ResponseInterface $originalResponse = new Psr7Response(), private float $responseTimeInSeconds = 0.0)
+    public function __construct(protected ResponseInterface $originalResponse = new Psr7Response(), protected float $responseTimeInSeconds = 0.0)
     {
     }
 

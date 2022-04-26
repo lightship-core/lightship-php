@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Loading a complete URL (starting with "http") will not use the previously used `->domain("foo")`.
 - Specifying query strings will correctly be taken into account.
+- All classes private properties have been turned into protected.
 
 ## [0.1.0] - 2022-04-24
 

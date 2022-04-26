@@ -27,7 +27,7 @@ use Lightship\Rules\Seo\TitlePresent;
 
 class Analyser
 {
-    private Client $client;
+    protected Client $client;
 
     public function __construct(Client $client)
     {
@@ -52,7 +52,7 @@ class Analyser
     /**
      * @return array<RuleReport>
      */
-    private function ruleReports(Response $response): array
+    protected function ruleReports(Response $response): array
     {
         return [
             // Security
@@ -81,7 +81,7 @@ class Analyser
         ];
     }
 
-    private function getResponse(Route $route): Response
+    protected function getResponse(Route $route): Response
     {
         $responseTimeInSeconds = 0;
 

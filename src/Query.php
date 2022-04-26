@@ -7,8 +7,8 @@ use Webmozart\Assert\Assert;
 
 class Query
 {
-    private string $key;
-    private string $value;
+    protected string $key;
+    protected string $value;
 
     public function __construct()
     {

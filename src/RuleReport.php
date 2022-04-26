@@ -4,10 +4,10 @@ namespace Lightship;
 
 class RuleReport
 {
-    private string $name;
-    private bool $passes;
-    private int $score;
-    private RuleType $ruleType;
+    protected string $name;
+    protected bool $passes;
+    protected int $score;
+    protected RuleType $ruleType;
 
     public function __construct()
     {

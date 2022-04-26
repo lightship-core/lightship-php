@@ -10,20 +10,20 @@ use Webmozart\Assert\Assert;
 
 class Lightship
 {
-    private string $domain;
+    protected string $domain;
 
     /**
      * @var array<Route>
      */
-    private array $routes;
+    protected array $routes;
 
     /**
      * @var array<Report>
      */
-    private array $reports;
-    private Closure $onReportedRouteCallback;
+    protected array $reports;
+    protected Closure $onReportedRouteCallback;
 
-    private Client $client;
+    protected Client $client;
 
     public function __construct(?Client $client = null)
     {

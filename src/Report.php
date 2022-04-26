@@ -4,13 +4,13 @@ namespace Lightship;
 
 class Report
 {
-    private string $url;
-    private float $durationInSeconds;
+    protected string $url;
+    protected float $durationInSeconds;
 
     /**
      * @var array<RuleReport>
      */
-    private array $ruleReports;
+    protected array $ruleReports;
 
     public function __construct()
     {
