@@ -85,3 +85,16 @@ test("it throws an exception when loading a config file that is not a correct JS
 
     expect(fn () => (new Lightship())->config(__DIR__ . "/misc/bad-lightship.json"))->toThrow(Exception::class, "Could not read config file");
 });
+
+test("can chain methods after calling analyse()", function (): void {
+    $faker = Factory::create();
+    $client = new Client([
+        "handler" => HandlerStack::create(new MockHandler([
+            new Response(200, [], ""),
+        ]))
+    ]);
+
+    $lighship = new Lightship($client);
+
+    expect($lighship->route($faker->url())->analyse())->toBeInstanceOf(Lightship::class);
+});

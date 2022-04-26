@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Calling `$lightship->analyse()` now allows to chain other methods (like `->toJson()`).
+
+## [0.2.0] 2022-04-26
+
+### Added
+
 - End of file return lines to generated JSON report files.
 
 ### Fixed

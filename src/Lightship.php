@@ -87,7 +87,7 @@ class Lightship
         return $this;
     }
 
-    public function analyse(): void
+    public function analyse(): static
     {
         $analyser = new Analyser($this->client);
 
@@ -98,6 +98,8 @@ class Lightship
 
             call_user_func($this->onReportedRouteCallback, $route, $report);
         }
+
+        return $this;
     }
 
     public function onReportedRoute(Closure $callback): self
