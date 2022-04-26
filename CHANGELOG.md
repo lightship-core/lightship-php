@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Calling `$lightship->analyse()` now allows to chain other methods (like `->toJson()`).
+- We can now set a custom GuzzleClient by calling `->client()`.
 
 ## [0.2.0] 2022-04-26
 

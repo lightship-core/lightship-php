@@ -210,6 +210,13 @@ class Lightship
         return $this;
     }
 
+    public function client(Client $client): static
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
     protected static function getHttpClient(): Client
     {
         return new Client([

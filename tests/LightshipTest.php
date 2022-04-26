@@ -98,3 +98,13 @@ test("can chain methods after calling analyse()", function (): void {
 
     expect($lighship->route($faker->url())->analyse())->toBeInstanceOf(Lightship::class);
 });
+
+test("can add a custom Guzzle client by calling ->client() and we can chain methods after", function (): void {
+    $client = new Client([
+        "handler" => HandlerStack::create(new MockHandler([
+            new Response(200, [], ""),
+        ]))
+    ]);
+
+    expect((new Lightship())->client($client))->toBeInstanceOf(Lightship::class);
+});
