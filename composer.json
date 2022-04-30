@@ -17,7 +17,7 @@
   ],
   "minimum-stability": "stable",
   "require-dev": {
-    "phpstan/phpstan": "1.5.7",
+    "phpstan/phpstan": "1.6.3",
     "pestphp/pest": "1.21.2",
     "friendsofphp/php-cs-fixer": "3.8.0",
     "thibautselingue/local-php-security-checker-installer": "1.0.3",
