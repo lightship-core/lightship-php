@@ -60,7 +60,7 @@ class MetaDescriptionPresent extends BaseRule
             if ($name->nodeValue === "description") {
                 $content = $attributes->getNamedItem("content");
 
-                if (!($content instanceof DOMAttr) || empty(trim($content->nodeValue ?? ""))) {
+                if (!($content instanceof DOMAttr)) {
                     libxml_clear_errors();
 
                     return false;

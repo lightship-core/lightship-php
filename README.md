@@ -147,6 +147,10 @@ $lightship->route("https://example.com")
   ->route("https://northerwind.com")
   ->onReportedRoute(function (Route $route, Report $report): void {
     echo "{$route->path()}: {$report->score(RuleType::Security)}" . PHP_EOL;
+
+    foreach ($report->results as $result) {
+      echo "  {$result->name} {$result->passes}";
+    }
   })
   ->analyse();
 ```

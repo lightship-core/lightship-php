@@ -57,10 +57,10 @@ class Report
                 "performance" => $this->score(RuleType::Performance),
                 "accessibility" => $this->score(RuleType::Accessibility),
             ],
-            "seo" => $this->results(RuleType::Seo),
-            "security" => $this->results(RuleType::Security),
-            "performance" => $this->results(RuleType::Performance),
-            "accessibility" => $this->results(RuleType::Accessibility),
+            "seo" => $this->resultsList(RuleType::Seo),
+            "security" => $this->resultsList(RuleType::Security),
+            "performance" => $this->resultsList(RuleType::Performance),
+            "accessibility" => $this->resultsList(RuleType::Accessibility),
         ];
     }
 
@@ -78,15 +78,12 @@ class Report
     }
 
     /**
-     * @return array<int, array<string, bool|string>>
+     * @return array<Result>
      */
     public function results(RuleType $ruleType): array
     {
         return array_map(
-            fn (RuleReport $report): array => [
-                "name" => $report->name(),
-                "passes" => $report->passes(),
-            ],
+            fn (RuleReport $report): Result => new Result($report->name(), $report->passes()),
             array_values(
                 array_filter(
                     $this->ruleReports,
@@ -94,5 +91,13 @@ class Report
                 )
             )
         );
+    }
+
+    /**
+     * @return array<int, array<string, bool|string>>
+     */
+    protected function resultsList(RuleType $ruleType): array
+    {
+        return array_map(fn (Result $result): array => $result->toArray(), $this->results($ruleType));
     }
 }

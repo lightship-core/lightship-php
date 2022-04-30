@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Breaked
+
+- Calling `Report::results()` now returns an array of `Result` instead of an associative array. See the [README](README.md#3-set-a-response-callback) for examples of usage.
+
 ## [0.3.0] 2022-04-26
 
 ### Added
