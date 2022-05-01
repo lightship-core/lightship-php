@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Breaked
 
 - Calling `Report::results()` now returns an array of `Result` instead of an associative array. See the [README](README.md#3-set-a-response-callback) for examples of usage.
+- Return type of `Report::toArray()` is no longer `mixed`, but an array of detailed key/value with their types.
 
 ## [0.3.0] 2022-04-26
 

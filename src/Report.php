@@ -44,7 +44,7 @@ class Report
     }
 
     /**
-     * @return array<mixed>
+     * @return array{url: string, durationInSeconds: float, scores: array{seo: int, security: int, performance: int, accessibility: int}, seo: array<array{name: string, passes: bool}>, security: array<array{name: string, passes: bool}>, performance: array<array{name: string, passes: bool}>, accessibility: array<array{name: string, passes: bool}>}
      */
     public function toArray(): array
     {
@@ -94,7 +94,7 @@ class Report
     }
 
     /**
-     * @return array<int, array<string, bool|string>>
+     * @return array<array{name: string, passes: bool}>
      */
     protected function resultsList(RuleType $ruleType): array
     {
