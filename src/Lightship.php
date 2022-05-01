@@ -121,7 +121,7 @@ class Lightship
     }
 
     /**
-     * @return array<mixed>
+     * @return array<array{url: string, durationInSeconds: float, scores: array{seo: int, security: int, performance: int, accessibility: int}, seo: array<array{name: string, passes: bool}>, security: array<array{name: string, passes: bool}>, performance: array<array{name: string, passes: bool}>, accessibility: array<array{name: string, passes: bool}>}>
      */
     public function toArray(): array
     {
