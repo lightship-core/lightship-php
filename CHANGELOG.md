@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] 2022-05-01
+
 ### Breaked
 
 - Return type of `Lightship::toArray()` is no longer `mixed` but an array of array of detailed key/value with their types.
