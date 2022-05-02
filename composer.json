@@ -17,7 +17,7 @@
   ],
   "minimum-stability": "stable",
   "require-dev": {
-    "phpstan/phpstan": "1.6.3",
+    "phpstan/phpstan": "1.6.4",
     "pestphp/pest": "1.21.2",
     "friendsofphp/php-cs-fixer": "3.8.0",
     "thibautselingue/local-php-security-checker-installer": "1.0.3",
@@ -40,6 +40,7 @@
   "require": {
     "guzzlehttp/guzzle": "7.*",
     "webmozart/assert": "1.*",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "php": ">=8.1.0"
   }
 }
