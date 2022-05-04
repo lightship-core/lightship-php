@@ -4,43 +4,14 @@ namespace Lightship;
 
 class Report
 {
-    protected string $url;
-    protected float $durationInSeconds;
-
-    /**
-     * @var array<RuleReport>
-     */
-    protected array $ruleReports;
-
-    public function __construct()
-    {
-        $this->url = "";
-        $this->durationInSeconds = 0.0;
-        $this->ruleReports = [];
-    }
-
-    public function url(string $url): self
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    public function durationInSeconds(float $duration): self
-    {
-        $this->durationInSeconds = $duration;
-
-        return $this;
-    }
-
-    /**
-     * @param array<RuleReport> $ruleReports
-     */
-    public function setRuleReports(array $ruleReports): self
-    {
-        $this->ruleReports = $ruleReports;
-
-        return $this;
+    public function __construct(
+        public readonly string $url,
+        public readonly float $durationInSeconds,
+        /**
+         * @var array<RuleReport>
+         */
+        private array $ruleReports
+    ) {
     }
 
     /**

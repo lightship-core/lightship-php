@@ -40,13 +40,11 @@ class Analyser
 
         $response = $this->getResponse($route);
 
-        $report = new Report();
-
-        $report->url($route->path())
-            ->setRuleReports($this->ruleReports($response))
-            ->durationInSeconds(round((microtime(true) - $start), 2));
-
-        return $report;
+        return new Report(
+            url: $route->path(),
+            durationInSeconds: round((microtime(true) - $start), 2),
+            ruleReports: $this->ruleReports($response)
+        );
     }
 
     /**
