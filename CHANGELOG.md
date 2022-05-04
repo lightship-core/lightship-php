@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - You can now access `$report->durationInSeconds`.
 
+## [0.6.0] 2022-05-02
+
 ### Breaked
 
 - This package now requires PHP >=8.1.0 ([#1](https://github.com/lightship-core/lightship-php/issues/1)).
