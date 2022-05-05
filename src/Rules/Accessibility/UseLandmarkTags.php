@@ -11,7 +11,7 @@ class UseLandmarkTags extends BaseRule
     public function __construct()
     {
         $this->name = "useLandmarkTags";
-        $this->value = 12;
+        $this->value = 14;
         $this->type = RuleType::Accessibility;
     }
 

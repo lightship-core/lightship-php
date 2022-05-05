@@ -14,7 +14,7 @@ class MetaThemeColorPresent extends BaseRule
     public function __construct()
     {
         $this->name = "metaThemeColorPresent";
-        $this->value = 12;
+        $this->value = 14;
         $this->type = RuleType::Accessibility;
     }
 

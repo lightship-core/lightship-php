@@ -35,7 +35,7 @@ test("it can set report callback", function (): void {
 
     $content = ob_get_clean();
 
-    expect($content)->toBe("$route1: 0/50/50/38\n$route2: 0/50/50/38\n");
+    expect($content)->toBe("$route1: 0/50/50/44\n$route2: 0/50/50/44\n");
 });
 
 test("it can generate json report", function (): void {

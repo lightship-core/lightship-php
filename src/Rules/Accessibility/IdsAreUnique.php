@@ -19,7 +19,7 @@ class IdsAreUnique extends BaseRule
     public function __construct()
     {
         $this->name = "idsAreUnique";
-        $this->value = 13;
+        $this->value = 15;
         $this->type = RuleType::Accessibility;
         $this->ids = [];
     }
