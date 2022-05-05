@@ -51,6 +51,11 @@ class BaseRule implements Rule
         return $this->type;
     }
 
+    public function value(): int
+    {
+        return $this->value;
+    }
+
     protected function passes(): bool
     {
         return false;

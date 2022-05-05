@@ -10,7 +10,7 @@ class DoctypeHtmlPresent extends BaseRule
     public function __construct()
     {
         $this->name = "doctypeHtmlPresent";
-        $this->value = 13;
+        $this->value = 14;
         $this->type = RuleType::Accessibility;
     }
 
