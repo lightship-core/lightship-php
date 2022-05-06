@@ -9,9 +9,13 @@ class StrictTransportSecurityHeaderPresent extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "strictTransportSecurityHeaderPresent";
         $this->value = 25;
         $this->type = RuleType::Security;
+    }
+
+    public function name(): string
+    {
+        return "strictTransportSecurityHeaderPresent";
     }
 
     protected function passes(): bool

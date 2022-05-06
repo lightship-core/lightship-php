@@ -11,9 +11,13 @@ class TitlePresent extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "titlePresent";
         $this->value = 25;
         $this->type = RuleType::Seo;
+    }
+
+    public function name(): string
+    {
+        return "titlePresent";
     }
 
     protected function passes(): bool

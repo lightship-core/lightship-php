@@ -61,6 +61,7 @@ Since my web app is fully server-side, all my tests are very fast, and do not re
 - [1. Simple example code-driver](#1-simple-example-code-driven)
 - [2. Simple example using a configuration file](#2-simple-example-using-a-configuration-file)
 - [3. Set a response callback](#3-set-a-response-callback)
+- [4. Assert rule passed for URLs](#4-assert-rule-passed-for-urls)
 
 ### 1. Simple example code-driven
 
@@ -160,6 +161,28 @@ This will display something like this:
 ```bash
 https://example.com/: 38
 https://northerwind.com/: 61
+```
+
+### 4. Assert rule passed for URLs
+
+Useful in your tests and CI, you can assert your URLs pass some/all rules.
+
+```php
+use Lightship\Lightship;
+use Lightship\Rules\Seo\LangPresent;
+use Lightship\Rules\Performance\FastResponseTime;
+
+$lightship = new Lightship();
+
+$lightship->route("https://example.com")
+  ->route("https://google.com")
+  ->analyse();
+
+assert($lightship->rulePassed(["https://example.com"], LangPresent::class) === true);
+
+assert($lightship->allRulesPassed(["https://google.com"]) === true);
+
+assert($lightship->someRulesPassed(["https://google.com"], [LangPresent::class, FastResponseTime::class]) === true);
 ```
 
 ## Tests

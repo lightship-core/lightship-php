@@ -9,9 +9,13 @@ class FastResponseTime extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "fastResponseTime";
         $this->value = 25;
         $this->type = RuleType::Performance;
+    }
+
+    public function name(): string
+    {
+        return "fastResponseTime";
     }
 
     protected function passes(): bool

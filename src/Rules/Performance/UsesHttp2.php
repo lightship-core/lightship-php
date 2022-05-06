@@ -9,9 +9,13 @@ class UsesHttp2 extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "usesHttp2";
         $this->value = 25;
         $this->type = RuleType::Performance;
+    }
+
+    public function name(): string
+    {
+        return "usesHttp2";
     }
 
     public function passes(): bool

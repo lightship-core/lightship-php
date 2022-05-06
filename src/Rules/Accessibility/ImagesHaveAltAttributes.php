@@ -13,9 +13,13 @@ class ImagesHaveAltAttributes extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "imagesHaveAltAttributes";
         $this->value = 14;
         $this->type = RuleType::Accessibility;
+    }
+
+    public function name(): string
+    {
+        return "imagesHaveAltAttributes";
     }
 
     protected function passes(): bool
