@@ -6,6 +6,8 @@ use Closure;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
+use Lightship\Exceptions\RuleNotFoundException;
+use Lightship\Exceptions\UrlNotFoundException;
 use Webmozart\Assert\Assert;
 
 class Lightship
@@ -217,6 +219,47 @@ class Lightship
         return $this;
     }
 
+    /**
+     * @param array<string> $urls
+     */
+    public function allRulesPassed(array $urls): bool
+    {
+        $this->raiseIfUrlsNotFoundInReports($urls);
+
+        $reports = $this->reportsMatchingUrls($urls);
+
+        return count(array_filter($reports, fn (Report $report): bool => !$report->allRulesPassed())) === 0;
+    }
+
+    /**
+     * @param array<string> $urls
+     */
+    public function rulePassed(array $urls, string $rule): bool
+    {
+        $this->raiseIfRulesDoNotExist([$rule]);
+        $this->raiseIfUrlsNotFoundInReports($urls);
+
+        $ruleClass = new $rule();
+
+        assert($ruleClass instanceof Rule);
+
+        $reports = $this->reportsMatchingUrls($urls);
+
+        return count(array_filter($reports, fn (Report $report): bool => !$report->rulePassed($ruleClass))) === 0;
+    }
+
+    /**
+     * @param array<string> $urls
+     * @param array<string> $rules
+     */
+    public function someRulesPassed(array $urls, array $rules): bool
+    {
+        $this->raiseIfRulesDoNotExist($rules);
+        $this->raiseIfUrlsNotFoundInReports($urls);
+
+        return count(array_filter($rules, fn (string $rule): bool => !$this->rulePassed($urls, $rule))) === 0;
+    }
+
     protected static function getHttpClient(): Client
     {
         return new Client([
@@ -228,5 +271,50 @@ class Lightship
                 "Accept-Encoding" => "gzip,deflate,br",
             ],
         ]);
+    }
+
+    /**
+     * @param array<string> $urls
+     *
+     * @return array<Report>
+     */
+    protected function reportsMatchingUrls(array $urls): array
+    {
+        return array_filter($this->reports, function (Report $report) use ($urls): bool {
+            return in_array($report->url, $urls, true);
+        });
+    }
+
+    /**
+     * @param array<string> $urls
+     */
+    protected function raiseIfUrlsNotFoundInReports(array $urls): void
+    {
+        $reportUrls = array_map(fn (Report $report): string => $report->url, $this->reports);
+        $urlsNotFound = array_filter($urls, fn (string $url): bool => !in_array($url, $reportUrls, true));
+
+        if (count($urlsNotFound) > 0) {
+            $firstUrlNotFound = $urlsNotFound[0];
+
+            throw new UrlNotFoundException("URL $firstUrlNotFound did not matched any report.");
+        }
+    }
+
+    /**
+     * @param array<string> $rules
+     */
+    protected function raiseIfRulesDoNotExist(array $rules): void
+    {
+        foreach ($rules as $rule) {
+            if (!class_exists($rule)) {
+                throw new RuleNotFoundException("Rule $rule not found.");
+            }
+
+            $ruleClass = new $rule();
+
+            if (!($ruleClass instanceof Rule)) {
+                throw new RuleNotFoundException("Rule $rule not found.");
+            }
+        }
     }
 }

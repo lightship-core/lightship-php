@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- New methods `Lightship::allRulesPassed()`, `Lightship::rulePassed()` and `Lightship::someRulesPassed()` ([#6](https://github.com/lightship-core/lightship-php/issues/6)).
+
 ## [0.7.1] 2022-05-05
 
 ## Fixed

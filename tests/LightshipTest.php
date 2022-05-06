@@ -8,6 +8,9 @@ use GuzzleHttp\Psr7\Response;
 use Lightship\Lightship;
 use Lightship\Report;
 use Lightship\Route;
+use Lightship\Rules\Accessibility\IdsAreUnique;
+use Lightship\Rules\Performance\FastResponseTime;
+use Lightship\Rules\Seo\LangPresent;
 use Lightship\RuleType;
 
 test("it can set report callback", function (): void {
@@ -107,4 +110,94 @@ test("can add a custom Guzzle client by calling ->client() and we can chain meth
     ]);
 
     expect((new Lightship())->client($client))->toBeInstanceOf(Lightship::class);
+});
+
+test("it can assert an URL pass all rules", function (): void {
+    $faker = Factory::create();
+    $client = new Client([
+        "handler" => HandlerStack::create(new MockHandler([
+            new Response(200, [], ""),
+        ]))
+    ]);
+
+    $url = $faker->url();
+
+    $lighship = new Lightship($client);
+
+    $lighship->route($url)
+        ->analyse();
+
+    expect($lighship->allRulesPassed([$url]))->toBeFalse();
+});
+
+test("it can assert a specific rule passed for an URL", function (): void {
+    $faker = Factory::create();
+    $client = new Client([
+        "handler" => HandlerStack::create(new MockHandler([
+            new Response(200, [], ""),
+        ]))
+    ]);
+
+    $url = $faker->url();
+
+    $lighship = new Lightship($client);
+
+    $lighship->route($url)
+        ->analyse();
+
+    expect($lighship->rulePassed([$url], FastResponseTime::class))->toBeTrue();
+});
+
+test("it asserts a specific rule did not passed for an URL", function (): void {
+    $faker = Factory::create();
+    $client = new Client([
+        "handler" => HandlerStack::create(new MockHandler([
+            new Response(200, [], ""),
+        ]))
+    ]);
+
+    $url = $faker->url();
+
+    $lighship = new Lightship($client);
+
+    $lighship->route($url)
+        ->analyse();
+
+    expect($lighship->rulePassed([$url], LangPresent::class))->toBeFalse();
+});
+
+test("it can assert some rules passed for an URL", function (): void {
+    $faker = Factory::create();
+    $client = new Client([
+        "handler" => HandlerStack::create(new MockHandler([
+            new Response(200, [], ""),
+        ]))
+    ]);
+
+    $url = $faker->url();
+
+    $lighship = new Lightship($client);
+
+    $lighship->route($url)
+        ->analyse();
+
+    expect($lighship->someRulesPassed([$url], [FastResponseTime::class, IdsAreUnique::class]))->toBeTrue();
+});
+
+test("it does not assert some rules passed for an URL if at least one did not pass", function (): void {
+    $faker = Factory::create();
+    $client = new Client([
+        "handler" => HandlerStack::create(new MockHandler([
+            new Response(200, [], ""),
+        ]))
+    ]);
+
+    $url = $faker->url();
+
+    $lighship = new Lightship($client);
+
+    $lighship->route($url)
+        ->analyse();
+
+    expect($lighship->someRulesPassed([$url], [FastResponseTime::class, LangPresent::class]))->toBeFalse();
 });

@@ -13,9 +13,13 @@ class ButtonsAndLinksUseAccessibleName extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "buttonsAndLinksUseAccessibleName";
         $this->value = 15;
         $this->type = RuleType::Accessibility;
+    }
+
+    public function name(): string
+    {
+        return "buttonsAndLinksUseAccessibleName";
     }
 
     protected function passes(): bool

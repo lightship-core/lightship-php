@@ -11,7 +11,8 @@ class Result
 {
     public function __construct(
         public readonly string $name,
-        public readonly bool $passes
+        public readonly bool $passes,
+        public readonly RuleType $ruleType,
     ) {
     }
 

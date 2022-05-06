@@ -9,9 +9,13 @@ class XPoweredByHidden extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "xPoweredByHidden";
         $this->value = 25;
         $this->type = RuleType::Security;
+    }
+
+    public function name(): string
+    {
+        return "xPoweredByHidden";
     }
 
     protected function passes(): bool

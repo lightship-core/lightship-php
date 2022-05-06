@@ -9,9 +9,13 @@ class NoRedirects extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "noRedirects";
         $this->value = 25;
         $this->type = RuleType::Performance;
+    }
+
+    public function name(): string
+    {
+        return "noRedirects";
     }
 
     protected function passes(): bool

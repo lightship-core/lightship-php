@@ -13,9 +13,13 @@ class LinksDefineHref extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "linksDefineHref";
         $this->value = 25;
         $this->type = RuleType::Seo;
+    }
+
+    public function name(): string
+    {
+        return "linksDefineHref";
     }
 
     protected function passes(): bool

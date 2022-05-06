@@ -18,10 +18,14 @@ class IdsAreUnique extends BaseRule
 
     public function __construct()
     {
-        $this->name = "idsAreUnique";
         $this->value = 15;
         $this->type = RuleType::Accessibility;
         $this->ids = [];
+    }
+
+    public function name(): string
+    {
+        return "idsAreUnique";
     }
 
     protected function passes(): bool

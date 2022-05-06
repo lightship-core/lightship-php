@@ -9,9 +9,13 @@ class TextCompressionEnabled extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "textCompressionEnabled";
         $this->value = 25;
         $this->type = RuleType::Performance;
+    }
+
+    public function name(): string
+    {
+        return "textCompressionEnabled";
     }
 
     protected function passes(): bool

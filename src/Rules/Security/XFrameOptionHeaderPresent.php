@@ -9,9 +9,13 @@ class XFrameOptionHeaderPresent extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "xFrameOptionsPresent";
         $this->value = 25;
         $this->type = RuleType::Security;
+    }
+
+    public function name(): string
+    {
+        return "xFrameOptionsPresent";
     }
 
     protected function passes(): bool

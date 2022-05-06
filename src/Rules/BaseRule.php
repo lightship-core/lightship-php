@@ -11,14 +11,12 @@ class BaseRule implements Rule
 {
     protected Response $response;
 
-    protected string $name;
     protected int $value;
     protected RuleType $type;
 
     public function __construct()
     {
         $this->response = new Response();
-        $this->name = "";
         $this->value = 0;
         $this->type = RuleType::Unknown;
     }
@@ -39,7 +37,7 @@ class BaseRule implements Rule
         $passes = $this->passes();
 
         $report->setRuleType($this->type)
-            ->setName($this->name)
+            ->setName($this->name())
             ->setPasses($passes)
             ->setScore($passes ? $this->value : 0);
 
@@ -54,6 +52,11 @@ class BaseRule implements Rule
     public function value(): int
     {
         return $this->value;
+    }
+
+    public function name(): string
+    {
+        return "";
     }
 
     protected function passes(): bool

@@ -13,9 +13,13 @@ class MetaDescriptionPresent extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "metaDescriptionPresent";
         $this->value = 25;
         $this->type = RuleType::Seo;
+    }
+
+    public function name(): string
+    {
+        return "metaDescriptionPresent";
     }
 
     protected function passes(): bool

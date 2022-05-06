@@ -9,9 +9,13 @@ class ServerHeaderHidden extends BaseRule
 {
     public function __construct()
     {
-        $this->name = "serverHeaderHidden";
         $this->value = 25;
         $this->type = RuleType::Security;
+    }
+
+    public function name(): string
+    {
+        return "serverHeaderHidden";
     }
 
     protected function passes(): bool

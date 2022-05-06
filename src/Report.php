@@ -54,7 +54,7 @@ class Report
     public function results(RuleType $ruleType): array
     {
         return array_map(
-            fn (RuleReport $report): Result => new Result($report->name(), $report->passes()),
+            fn (RuleReport $report): Result => new Result($report->name(), $report->passes(), $ruleType),
             array_values(
                 array_filter(
                     $this->ruleReports,
@@ -62,6 +62,40 @@ class Report
                 )
             )
         );
+    }
+
+    public function ruleTypePassed(RuleType $ruleType): bool
+    {
+        return count(array_filter($this->results($ruleType), fn (Result $result): bool => !$result->passes)) === 0;
+    }
+
+    public function allRulesPassed(): bool
+    {
+        return $this->ruleTypePassed(RuleType::Accessibility) ||
+            $this->ruleTypePassed(RuleType::Performance) ||
+            $this->ruleTypePassed(RuleType::Security) ||
+            $this->ruleTypePassed(RuleType::Seo);
+    }
+
+    public function rulePassed(Rule $rule): bool
+    {
+        /**
+         * @var array<Result>
+         */
+        $results = array_values(
+            array_filter(
+                $this->results($rule->type()),
+                fn (Result $result): bool => $result->name === $rule->name()
+            )
+        );
+
+        if (count($results) === 0) {
+            return false;
+        }
+
+        $result = $results[0];
+
+        return $result->passes;
     }
 
     /**
