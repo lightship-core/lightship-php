@@ -185,6 +185,17 @@ assert($lightship->allRulesPassed(["https://google.com"]) === true);
 assert($lightship->someRulesPassed(["https://google.com"], [LangPresent::class, FastResponseTime::class]) === true);
 ```
 
+## Requirements
+
+- [PHP](https://www.php.net/)
+- [Composer](https://getcomposer.org/)
+
+## Installation
+
+```bash
+composer require lightship-core/lightship-php
+```
+
 ## Tests
 
 ```bash
