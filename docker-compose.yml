@@ -14,13 +14,6 @@ services:
       - .:/home/alpine/app
     working_dir: /home/alpine/app
 
-  php80:
-    build: ./docker/php/8.0
-    entrypoint: php
-    volumes:
-      - .:/home/alpine/app
-    working_dir: /home/alpine/app
-
   composer:
     build: ./docker/php/8.2
     entrypoint: composer
@@ -32,15 +25,6 @@ services:
 
   composer81:
     build: ./docker/php/8.1
-    entrypoint: composer
-    environment:
-      - XDEBUG_MODE=coverage
-    volumes:
-      - .:/home/alpine/app
-    working_dir: /home/alpine/app
-
-  composer80:
-    build: ./docker/php/8.0
     entrypoint: composer
     environment:
       - XDEBUG_MODE=coverage
