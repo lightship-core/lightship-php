@@ -3,7 +3,7 @@
   "description": "Web page performance/seo/security/accessibility analysis, browser-less.",
   "type": "library",
   "license": "MIT",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "autoload": {
     "psr-4": {
       "Lightship\\": "src/"
