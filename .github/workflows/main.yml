@@ -31,9 +31,6 @@ jobs:
       - name: Install
         run: docker-compose run --rm composer install
 
-      - name: Install security checker
-        run: docker-compose run --rm composer run install-security-checker
-
       - name: Analyse
         run: docker-compose run --rm composer run analyse
 
@@ -60,9 +57,6 @@ jobs:
 
       - name: Install
         run: docker-compose run --rm composer81 install
-
-      - name: Install security checker
-        run: docker-compose run --rm composer81 run install-security-checker
 
       - name: Analyse
         run: docker-compose run --rm composer81 run analyse
