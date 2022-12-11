@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] 2022-12-11
+
+### Added
+
+- Support for PHP 8.2.
+
+### Breaking
+
+- Dropped support for PHP 8.0.
+- Dropped support for guzzlehttp/guzzle < 7.5.0.
+
 ## [0.8.0] 2022-05-06
 
 ### Added

@@ -17,17 +17,17 @@
   ],
   "minimum-stability": "stable",
   "require-dev": {
-    "phpstan/phpstan": "1.6.7",
-    "pestphp/pest": "1.21.2",
-    "friendsofphp/php-cs-fixer": "3.8.0",
+    "phpstan/phpstan": "1.9.2",
+    "pestphp/pest": "1.22.3",
+    "friendsofphp/php-cs-fixer": "3.13.0",
     "thibautselingue/local-php-security-checker-installer": "1.0.3",
-    "fakerphp/faker": "1.19.0"
+    "fakerphp/faker": "1.20.0"
   },
   "scripts": {
     "analyse": "phpstan analyse",
     "test": "pest --coverage",
-    "lint": "php-cs-fixer fix --diff --using-cache=no --allow-risky=yes --dry-run",
-    "format": "php-cs-fixer --using-cache=no --allow-risky=yes fix",
+    "lint": "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix --diff --using-cache=no --allow-risky=yes --dry-run",
+    "format": "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer --using-cache=no --allow-risky=yes fix",
     "install-security-checker": "local-php-security-checker-installer",
     "security-check": "local-php-security-checker",
     "update-check": "composer outdated --strict --direct"
@@ -38,7 +38,7 @@
     }
   },
   "require": {
-    "guzzlehttp/guzzle": "7.*",
+    "guzzlehttp/guzzle": "^7.5.0",
     "webmozart/assert": "1.*",
     "ext-curl": "*",
     "php": ">=8.1.0"
