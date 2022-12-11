@@ -215,5 +215,6 @@ This table shows the compatibility with PHP versions **for this current package 
 
 | PHP version | Supported |
 |-------------|-----------|
+| 8.2.*       | ✅        |
 | 8.1.*       | ✅        |
-| <= 8.0.*    | ❌        |
+| < 8.1.*     | ❌        |
