@@ -48,3 +48,33 @@ jobs:
 
       - name: Composer updates
         run: docker-compose run --rm composer run update-check
+
+  build_81:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check plateform requirements
+        run: docker-compose run --rm composer81 check-platform-reqs
+
+      - name: Install
+        run: docker-compose run --rm composer81 install
+
+      - name: Install security checker
+        run: docker-compose run --rm composer81 run install-security-checker
+
+      - name: Analyse
+        run: docker-compose run --rm composer81 run analyse
+
+      - name: Test
+        run: docker-compose run --rm composer81 run test
+
+      - name: Lint
+        run: docker-compose run --rm composer81 run lint
+
+      - name: Security check
+        run: docker-compose run --rm composer81 run security-check
+
+      - name: Composer updates
+        run: docker-compose run --rm composer81 run update-check
