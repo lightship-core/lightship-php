@@ -28,8 +28,9 @@
     "test": "pest --coverage",
     "lint": "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix --diff --using-cache=no --allow-risky=yes --dry-run",
     "format": "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer --using-cache=no --allow-risky=yes fix",
-    "security-check": "composer audit --locked --no-dev",
-    "update-check": "composer outdated --strict --direct"
+    "check": "composer audit --locked --no-dev",
+    "updates": "composer outdated --strict --direct",
+    "all": "composer run test && composer run analyse && composer run lint && composer run check && composer run updates"
   },
   "config": {
     "allow-plugins": {
