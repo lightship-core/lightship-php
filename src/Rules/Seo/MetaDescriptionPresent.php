@@ -56,8 +56,10 @@ class MetaDescriptionPresent extends BaseRule
             }
 
             $name = $attributes->getNamedItem("name");
-
-            if (!($name instanceof DOMAttr) || empty(trim($name->nodeValue ?? ""))) {
+            if (!($name instanceof DOMAttr)) {
+                continue;
+            }
+            if (empty(trim($name->nodeValue ?? ""))) {
                 continue;
             }
 

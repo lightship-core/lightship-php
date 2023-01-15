@@ -27,11 +27,8 @@ use Lightship\Rules\Seo\TitlePresent;
 
 class Analyser
 {
-    protected Client $client;
-
-    public function __construct(Client $client)
+    public function __construct(protected Client $client)
     {
-        $this->client = $client;
     }
 
     public function analyse(Route $route): Report

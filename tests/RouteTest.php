@@ -33,7 +33,7 @@ test("set route and queries", function (): void {
 });
 
 test("throws exception when setting empty path", function (): void {
-    expect(fn () => (new Route())->setPath(""))->toThrow(InvalidArgumentException::class);
+    expect(fn (): Route => (new Route())->setPath(""))->toThrow(InvalidArgumentException::class);
 });
 
 test("queries list returns queries formatted for Guzzle", function (): void {

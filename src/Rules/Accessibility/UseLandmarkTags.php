@@ -34,10 +34,15 @@ class UseLandmarkTags extends BaseRule
         $dom->loadHtml($content);
 
         libxml_clear_errors();
-
-        return $dom->getElementsByTagName("main")->count() > 0
-            || $dom->getElementsByTagName("header")->count() > 0
-            || $dom->getElementsByTagName("nav")->count() > 0
-            || $dom->getElementsByTagName("footer")->count() > 0;
+        if ($dom->getElementsByTagName("main")->count() > 0) {
+            return true;
+        }
+        if ($dom->getElementsByTagName("header")->count() > 0) {
+            return true;
+        }
+        if ($dom->getElementsByTagName("nav")->count() > 0) {
+            return true;
+        }
+        return $dom->getElementsByTagName("footer")->count() > 0;
     }
 }

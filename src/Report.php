@@ -10,7 +10,7 @@ class Report
         /**
          * @var array<RuleReport>
          */
-        private array $ruleReports
+        private readonly array $ruleReports
     ) {
     }
 
@@ -71,10 +71,16 @@ class Report
 
     public function allRulesPassed(): bool
     {
-        return $this->ruleTypePassed(RuleType::Accessibility) ||
-            $this->ruleTypePassed(RuleType::Performance) ||
-            $this->ruleTypePassed(RuleType::Security) ||
-            $this->ruleTypePassed(RuleType::Seo);
+        if ($this->ruleTypePassed(RuleType::Accessibility)) {
+            return true;
+        }
+        if ($this->ruleTypePassed(RuleType::Performance)) {
+            return true;
+        }
+        if ($this->ruleTypePassed(RuleType::Security)) {
+            return true;
+        }
+        return $this->ruleTypePassed(RuleType::Seo);
     }
 
     public function rulePassed(Rule $rule): bool

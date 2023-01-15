@@ -23,9 +23,13 @@ class ServerHeaderHidden extends BaseRule
         $headers = $this->response->getHeaders();
 
         foreach ($headers as $key => $value) {
-            if (strtolower($key) === "server" && (!isset($value[0]) || !empty(trim($value[0])))) {
-                return false;
+            if (strtolower($key) !== "server") {
+                continue;
             }
+            if (!(!isset($value[0]) || !empty(trim($value[0])))) {
+                continue;
+            }
+            return false;
         }
 
         return true;

@@ -23,9 +23,13 @@ class XPoweredByHidden extends BaseRule
         $headers = $this->response->getHeaders();
 
         foreach ($headers as $key => $value) {
-            if (strtolower($key) === "x-powered-by" && (!isset($value[0]) || !empty(trim($value[0])))) {
-                return false;
+            if (strtolower($key) !== "x-powered-by") {
+                continue;
             }
+            if (!(!isset($value[0]) || !empty(trim($value[0])))) {
+                continue;
+            }
+            return false;
         }
 
         return true;

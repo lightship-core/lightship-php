@@ -280,9 +280,7 @@ class Lightship
      */
     protected function reportsMatchingUrls(array $urls): array
     {
-        return array_filter($this->reports, function (Report $report) use ($urls): bool {
-            return in_array($report->url, $urls, true);
-        });
+        return array_filter($this->reports, fn (Report $report): bool => in_array($report->url, $urls, true));
     }
 
     /**

@@ -21,9 +21,16 @@ class XFrameOptionHeaderPresent extends BaseRule
     protected function passes(): bool
     {
         foreach ($this->response->getHeaders() as $key => $value) {
-            if (strtolower($key) === "x-frame-options" && isset($value[0]) && in_array(strtolower($value[0]), ["deny", "sameorigin"], true)) {
-                return true;
+            if (strtolower($key) !== "x-frame-options") {
+                continue;
             }
+            if (!isset($value[0])) {
+                continue;
+            }
+            if (!in_array(strtolower($value[0]), ["deny", "sameorigin"], true)) {
+                continue;
+            }
+            return true;
         }
 
         return false;

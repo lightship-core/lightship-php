@@ -60,5 +60,5 @@ test("throw exception when setting a route that is not instanceof Route", functi
     $domain = (new Domain());
 
     /** @phpstan-ignore-next-line Parameter #1 $routes of method Khalyomede\Domain::setRoutes() expects array<Khalyomede\Route>, array<int, string> given. */
-    expect(fn () => $domain->setRoutes([$faker->text()]))->toThrow(TypeError::class);
+    expect(fn (): Domain => $domain->setRoutes([$faker->text()]))->toThrow(TypeError::class);
 });

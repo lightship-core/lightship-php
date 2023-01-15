@@ -62,8 +62,10 @@ class IdsAreUnique extends BaseRule
             }
 
             $id = $attributes->getNamedItem("id");
-
-            if (!($id instanceof DOMAttr) || empty($id->nodeValue)) {
+            if (!($id instanceof DOMAttr)) {
+                continue;
+            }
+            if (empty($id->nodeValue)) {
                 continue;
             }
 

@@ -79,14 +79,14 @@ test("it can use lightship.json", function (): void {
 test("it throws an exception when loading a config file that do not exist", function (): void {
     $faker = Factory::create();
 
-    expect(fn () => (new Lightship())->config(__DIR__ . "/foo.json"))->toThrow(Exception::class, "File does not exist");
+    expect(fn (): Lightship => (new Lightship())->config(__DIR__ . "/foo.json"))->toThrow(Exception::class, "File does not exist");
 });
 
 
 test("it throws an exception when loading a config file that is not a correct JSON", function (): void {
     $faker = Factory::create();
 
-    expect(fn () => (new Lightship())->config(__DIR__ . "/misc/bad-lightship.json"))->toThrow(Exception::class, "Could not read config file");
+    expect(fn (): Lightship => (new Lightship())->config(__DIR__ . "/misc/bad-lightship.json"))->toThrow(Exception::class, "Could not read config file");
 });
 
 test("can chain methods after calling analyse()", function (): void {
