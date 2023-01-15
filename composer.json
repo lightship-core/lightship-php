@@ -17,11 +17,10 @@
   ],
   "minimum-stability": "stable",
   "require-dev": {
-    "phpstan/phpstan": "1.9.2",
+    "phpstan/phpstan": "1.9.11",
     "pestphp/pest": "1.22.3",
-    "friendsofphp/php-cs-fixer": "3.13.0",
-    "thibautselingue/local-php-security-checker-installer": "1.0.3",
-    "fakerphp/faker": "1.20.0"
+    "friendsofphp/php-cs-fixer": "3.13.2",
+    "fakerphp/faker": "1.21.0"
   },
   "scripts": {
     "analyse": "phpstan analyse",
