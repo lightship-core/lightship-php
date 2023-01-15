@@ -41,10 +41,10 @@ jobs:
         run: docker-compose run --rm composer run lint
 
       - name: Security check
-        run: docker-compose run --rm composer run security-check
+        run: docker-compose run --rm composer run check
 
       - name: Composer updates
-        run: docker-compose run --rm composer run update-check
+        run: docker-compose run --rm composer run updates
 
   build_81:
     runs-on: ubuntu-latest
@@ -68,7 +68,7 @@ jobs:
         run: docker-compose run --rm composer81 run lint
 
       - name: Security check
-        run: docker-compose run --rm composer81 run security-check
+        run: docker-compose run --rm composer81 run check
 
       - name: Composer updates
-        run: docker-compose run --rm composer81 run update-check
+        run: docker-compose run --rm composer81 run updates

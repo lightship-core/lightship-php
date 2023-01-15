@@ -47,8 +47,8 @@ Web page performance/seo/security/accessibility analysis, browser-less.
 
 - [About](#about)
 - [Examples](#examples)
-- [Tests](#tests)
 - [Compatibility table](#compatibility-table)
+- [Tests](#tests)
 
 ## About
 
@@ -196,18 +196,6 @@ assert($lightship->someRulesPassed(["https://google.com"], [LangPresent::class, 
 composer require lightship-core/lightship-php
 ```
 
-## Tests
-
-```bash
-composer check-platform-reqs
-composer install
-composer run analyse
-composer run test
-composer run lint
-composer run security-check
-composer run update-check
-```
-
 ## Compatibility table
 
 This table shows the compatibility with PHP versions **for this current package version** only.
@@ -217,3 +205,19 @@ This table shows the compatibility with PHP versions **for this current package 
 | 8.2.*       | ✅        |
 | 8.1.*       | ✅        |
 | < 8.1.*     | ❌        |
+
+## Tests
+
+```bash
+composer run analyse
+composer run test
+composer run lint
+composer run check
+composer run updates
+```
+
+Or
+
+```bash
+composer run all
+```
