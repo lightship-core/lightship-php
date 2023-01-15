@@ -43,6 +43,9 @@ jobs:
       - name: Security check
         run: docker-compose run --rm composer run check
 
+      - name: Modern code check
+        run: docker-compose run --rm composer run check
+
       - name: Composer updates
         run: docker-compose run --rm composer run updates
 
@@ -69,6 +72,9 @@ jobs:
 
       - name: Security check
         run: docker-compose run --rm composer81 run check
+
+      - name: Modern code check
+        run: docker-compose run --rm composer run check
 
       - name: Composer updates
         run: docker-compose run --rm composer81 run updates

@@ -12,7 +12,7 @@ test("links define href is a seo rule", function (): void {
     expect((new LinksDefineHref())->type())->toBe(RuleType::Seo);
 });
 
-test("links define href pass if all links have non empty href", function () {
+test("links define href pass if all links have non empty href", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
             new Response(200, [], "<a href='foo'></a>")
@@ -34,7 +34,7 @@ test("links define href pass if all links have non empty href", function () {
     ]);
 });
 
-test("links define href pass if all links have empty href", function () {
+test("links define href pass if all links have empty href", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
             new Response(200, [], "<a href=''></a>")
@@ -56,7 +56,7 @@ test("links define href pass if all links have empty href", function () {
     ]);
 });
 
-test("links define href pass if all links have no href", function () {
+test("links define href pass if all links have no href", function (): void {
     $client = new Client([
         "handler" => HandlerStack::create(new MockHandler([
             new Response(200, [], "<a></a>")

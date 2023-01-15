@@ -23,9 +23,16 @@ class StrictTransportSecurityHeaderPresent extends BaseRule
         $headers = $this->response->getHeaders();
 
         foreach ($headers as $key => $value) {
-            if (strtolower($key) === "strict-transport-security" && isset($value[0]) && preg_match("/^max-age=\d+/", $value[0]) === 1) {
-                return true;
+            if (strtolower($key) !== "strict-transport-security") {
+                continue;
             }
+            if (!isset($value[0])) {
+                continue;
+            }
+            if (preg_match("/^max-age=\d+/", $value[0]) !== 1) {
+                continue;
+            }
+            return true;
         }
 
         return false;
